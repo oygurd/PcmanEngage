@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PacmanMovement : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PacmanMovement : MonoBehaviour
 
     [SerializeField] float rayDistance;
 
+    //camera empty
+    public Transform emptyForCam;
 
     //*//
     public Vector3 forward;
@@ -17,7 +20,11 @@ public class PacmanMovement : MonoBehaviour
     public Vector3 left;
     //*// 
 
-    [SerializeField] bool rayHit;
+    [SerializeField] bool rayHitFront;
+    [SerializeField] bool rayHitBack;
+    [SerializeField] bool rayHitRight;
+    [SerializeField] bool rayHitLeft;
+
     [SerializeField] LayerMask CheckWallLayer;
     RaycastHit hit; //get information back from a raycast
 
@@ -39,19 +46,61 @@ public class PacmanMovement : MonoBehaviour
     void Update()
     {
 
-        DrawVectorRay();
+        DrawVectorRay();//draws rays to each direction to visualize the ray distance
+        Movement();
+        emptyForCam.transform.position = this.transform.position;//makes the empty the camera looks at only move with pacman and not rotate.
     }
 
     private void FixedUpdate()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayDistance, CheckWallLayer))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(forward), out hit, rayDistance, CheckWallLayer))
         {
-            rayHit = true;
+            rayHitLeft = true;
         }
         else
         {
-            rayHit = false;
+            rayHitLeft = false;
         }
+
+        /*---------------------------------------------*/
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(backward), out hit, rayDistance, CheckWallLayer))
+        {
+            rayHitRight = true;
+        }
+        else
+        {
+            rayHitRight = false;
+        }
+
+
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(right), out hit, rayDistance, CheckWallLayer))
+        {
+            rayHitFront = true;
+        }
+        else
+        {
+            rayHitFront = false;
+        }
+
+
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(left), out hit, rayDistance, CheckWallLayer))
+        {
+            rayHitBack = true;
+        }
+        else
+        {
+            rayHitBack = false;
+        }
+     
+    }
+
+    public void Movement()
+    {
+        transform.Translate(Vector3.forward * Speed * Time.deltaTime, Space.Self);
+        
     }
 
     private void OnDrawGizmos()
@@ -69,7 +118,6 @@ public class PacmanMovement : MonoBehaviour
         Debug.DrawRay(transform.position, right * rayDistance, Color.red);
 
         Debug.DrawRay(transform.position, left * rayDistance, Color.cyan);
-
 
     }
 }
