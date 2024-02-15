@@ -6,7 +6,6 @@ Shader "PacmanShader"
 	{
 		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[HideInInspector] _EmissionColor("Emission Color", Color) = (1,1,1,1)
-		[ASEEnd][ASEBegin]_lightvalue("light value", Float) = 1.19
 
 
 		//_TessPhongStrength( "Tess Phong Strength", Range( 0, 1 ) ) = 0.5
@@ -196,18 +195,13 @@ Shader "PacmanShader"
 			#include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 			#define ASE_NEEDS_VERT_NORMAL
 			#define ASE_NEEDS_FRAG_WORLD_POSITION
-			#define ASE_NEEDS_FRAG_SHADOWCOORDS
-			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
-			#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-			#pragma multi_compile_fragment _ _ADDITIONAL_LIGHT_SHADOWS
-			#pragma multi_compile_fragment _ _SHADOWS_SOFT
 
 
 			struct VertexInput
 			{
 				float4 vertex : POSITION;
 				float3 ase_normal : NORMAL;
-				float4 ase_tangent : TANGENT;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -224,15 +218,12 @@ Shader "PacmanShader"
 					float fogFactor : TEXCOORD2;
 				#endif
 				float4 ase_texcoord3 : TEXCOORD3;
-				float4 ase_texcoord4 : TEXCOORD4;
-				float4 ase_texcoord5 : TEXCOORD5;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float _lightvalue;
-			#ifdef ASE_TESSELLATION
+						#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -275,19 +266,21 @@ Shader "PacmanShader"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float3 ase_worldTangent = TransformObjectToWorldDir(v.ase_tangent.xyz);
-				o.ase_texcoord3.xyz = ase_worldTangent;
+				float3 ase_worldPos = TransformObjectToWorld( (v.vertex).xyz );
+				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
+				ase_worldViewDir = normalize(ase_worldViewDir);
 				float3 ase_worldNormal = TransformObjectToWorldNormal(v.ase_normal);
-				o.ase_texcoord4.xyz = ase_worldNormal;
-				float ase_vertexTangentSign = v.ase_tangent.w * ( unity_WorldTransformParams.w >= 0.0 ? 1.0 : -1.0 );
-				float3 ase_worldBitangent = cross( ase_worldNormal, ase_worldTangent ) * ase_vertexTangentSign;
-				o.ase_texcoord5.xyz = ase_worldBitangent;
+				float fresnelNdotV126 = dot( ase_worldNormal, ase_worldViewDir );
+				float fresnelNode126 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV126, 2.0 ) );
+				float temp_output_1_0_g90 = fresnelNode126;
+				float temp_output_123_0 = ( ( 0.0 - temp_output_1_0_g90 ) / ( 0.49 - temp_output_1_0_g90 ) );
+				float3 temp_cast_0 = (temp_output_123_0).xxx;
+				
+				o.ase_texcoord3.xyz = ase_worldNormal;
 				
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
 				o.ase_texcoord3.w = 0;
-				o.ase_texcoord4.w = 0;
-				o.ase_texcoord5.w = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.vertex.xyz;
@@ -303,7 +296,7 @@ Shader "PacmanShader"
 					v.vertex.xyz += vertexValue;
 				#endif
 
-				v.ase_normal = v.ase_normal;
+				v.ase_normal = temp_cast_0;
 
 				float3 positionWS = TransformObjectToWorld( v.vertex.xyz );
 				float4 positionCS = TransformWorldToHClip( positionWS );
@@ -333,8 +326,7 @@ Shader "PacmanShader"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 ase_normal : NORMAL;
-				float4 ase_tangent : TANGENT;
-
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -351,7 +343,7 @@ Shader "PacmanShader"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.vertex;
 				o.ase_normal = v.ase_normal;
-				o.ase_tangent = v.ase_tangent;
+				
 				return o;
 			}
 
@@ -390,7 +382,7 @@ Shader "PacmanShader"
 				VertexInput o = (VertexInput) 0;
 				o.vertex = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.ase_normal = patch[0].ase_normal * bary.x + patch[1].ase_normal * bary.y + patch[2].ase_normal * bary.z;
-				o.ase_tangent = patch[0].ase_tangent * bary.x + patch[1].ase_tangent * bary.y + patch[2].ase_tangent * bary.z;
+				
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -427,39 +419,18 @@ Shader "PacmanShader"
 					#endif
 				#endif
 
-				Gradient gradient2 = NewGradient( 1, 2, 2, float4( 1, 0.9175284, 0, 0.602945 ), float4( 0.4622642, 0.4241954, 0, 1 ), 0, 0, 0, 0, 0, 0, float2( 1, 0 ), float2( 1, 1 ), 0, 0, 0, 0, 0, 0 );
-				float3 LightWrapVector47_g87 = (( _lightvalue * 0.5 )).xxx;
-				float3 ase_worldTangent = IN.ase_texcoord3.xyz;
-				float3 ase_worldNormal = IN.ase_texcoord4.xyz;
-				float3 ase_worldBitangent = IN.ase_texcoord5.xyz;
-				float3 tanToWorld0 = float3( ase_worldTangent.x, ase_worldBitangent.x, ase_worldNormal.x );
-				float3 tanToWorld1 = float3( ase_worldTangent.y, ase_worldBitangent.y, ase_worldNormal.y );
-				float3 tanToWorld2 = float3( ase_worldTangent.z, ase_worldBitangent.z, ase_worldNormal.z );
-				float3 tanNormal19_g87 = float3(0,0,1);
-				float3 worldNormal19_g87 = normalize( float3(dot(tanToWorld0,tanNormal19_g87), dot(tanToWorld1,tanNormal19_g87), dot(tanToWorld2,tanNormal19_g87)) );
-				float3 CurrentNormal23_g87 = worldNormal19_g87;
-				float dotResult20_g87 = dot( CurrentNormal23_g87 , _MainLightPosition.xyz );
-				float NDotL21_g87 = dotResult20_g87;
-				float ase_lightAtten = 0;
-				Light ase_mainLight = GetMainLight( ShadowCoords );
-				ase_lightAtten = ase_mainLight.distanceAttenuation * ase_mainLight.shadowAttenuation;
-				float3 AttenuationColor8_g87 = ( _MainLightColor.rgb * ase_lightAtten );
-				float3 temp_cast_0 = (_MainLightPosition.xyz.y).xxx;
-				float3 DiffuseColor70_g87 = ( ( ( max( ( LightWrapVector47_g87 + ( ( 1.0 - LightWrapVector47_g87 ) * NDotL21_g87 ) ) , float3(0,0,0) ) * AttenuationColor8_g87 ) + (UNITY_LIGHTMODEL_AMBIENT).rgb ) * temp_cast_0 );
-				float3 normalizeResult77_g87 = normalize( _MainLightPosition.xyz );
+				Gradient gradient2 = NewGradient( 1, 2, 2, float4( 1, 0.9175284, 0, 0.9176471 ), float4( 0, 0, 0, 1 ), 0, 0, 0, 0, 0, 0, float2( 1, 0 ), float2( 1, 1 ), 0, 0, 0, 0, 0, 0 );
 				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - WorldPosition );
 				ase_worldViewDir = normalize(ase_worldViewDir);
-				float3 normalizeResult28_g87 = normalize( ( normalizeResult77_g87 + ase_worldViewDir ) );
-				float3 HalfDirection29_g87 = normalizeResult28_g87;
-				float dotResult32_g87 = dot( HalfDirection29_g87 , CurrentNormal23_g87 );
-				float SpecularPower14_g87 = exp2( ( ( 0.0 * 10.0 ) + 1.0 ) );
-				float3 specularFinalColor42_g87 = ( AttenuationColor8_g87 * pow( max( dotResult32_g87 , 0.0 ) , SpecularPower14_g87 ) * 0.0 );
-				float3 temp_output_112_0 = ( DiffuseColor70_g87 + specularFinalColor42_g87 );
-				float3 temp_output_113_0 = ( temp_output_112_0 * _lightvalue );
+				float3 ase_worldNormal = IN.ase_texcoord3.xyz;
+				float fresnelNdotV126 = dot( ase_worldNormal, ase_worldViewDir );
+				float fresnelNode126 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV126, 2.0 ) );
+				float temp_output_1_0_g90 = fresnelNode126;
+				float temp_output_123_0 = ( ( 0.0 - temp_output_1_0_g90 ) / ( 0.49 - temp_output_1_0_g90 ) );
 				
 				float3 BakedAlbedo = 0;
 				float3 BakedEmission = 0;
-				float3 Color = SampleGradient( gradient2, ( _MainLightPosition.xyz + temp_output_113_0 ).x ).rgb;
+				float3 Color = SampleGradient( gradient2, temp_output_123_0 ).rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
@@ -519,7 +490,8 @@ Shader "PacmanShader"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
@@ -544,8 +516,7 @@ Shader "PacmanShader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float _lightvalue;
-			#ifdef ASE_TESSELLATION
+						#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -568,6 +539,15 @@ Shader "PacmanShader"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
+				float3 ase_worldPos = TransformObjectToWorld( (v.vertex).xyz );
+				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
+				ase_worldViewDir = normalize(ase_worldViewDir);
+				float3 ase_worldNormal = TransformObjectToWorldNormal(v.ase_normal);
+				float fresnelNdotV126 = dot( ase_worldNormal, ase_worldViewDir );
+				float fresnelNode126 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV126, 2.0 ) );
+				float temp_output_1_0_g90 = fresnelNode126;
+				float temp_output_123_0 = ( ( 0.0 - temp_output_1_0_g90 ) / ( 0.49 - temp_output_1_0_g90 ) );
+				float3 temp_cast_0 = (temp_output_123_0).xxx;
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -584,7 +564,7 @@ Shader "PacmanShader"
 					v.vertex.xyz += vertexValue;
 				#endif
 
-				v.ase_normal = v.ase_normal;
+				v.ase_normal = temp_cast_0;
 
 				float3 positionWS = TransformObjectToWorld( v.vertex.xyz );
 
@@ -765,7 +745,8 @@ Shader "PacmanShader"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
@@ -790,8 +771,7 @@ Shader "PacmanShader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float _lightvalue;
-			#ifdef ASE_TESSELLATION
+						#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -811,6 +791,15 @@ Shader "PacmanShader"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float3 ase_worldPos = TransformObjectToWorld( (v.vertex).xyz );
+				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
+				ase_worldViewDir = normalize(ase_worldViewDir);
+				float3 ase_worldNormal = TransformObjectToWorldNormal(v.ase_normal);
+				float fresnelNdotV126 = dot( ase_worldNormal, ase_worldViewDir );
+				float fresnelNode126 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV126, 2.0 ) );
+				float temp_output_1_0_g90 = fresnelNode126;
+				float temp_output_123_0 = ( ( 0.0 - temp_output_1_0_g90 ) / ( 0.49 - temp_output_1_0_g90 ) );
+				float3 temp_cast_0 = (temp_output_123_0).xxx;
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -827,7 +816,7 @@ Shader "PacmanShader"
 					v.vertex.xyz += vertexValue;
 				#endif
 
-				v.ase_normal = v.ase_normal;
+				v.ase_normal = temp_cast_0;
 
 				float3 positionWS = TransformObjectToWorld( v.vertex.xyz );
 
@@ -991,7 +980,8 @@ Shader "PacmanShader"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
@@ -1010,8 +1000,7 @@ Shader "PacmanShader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float _lightvalue;
-			#ifdef ASE_TESSELLATION
+						#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -1042,6 +1031,15 @@ Shader "PacmanShader"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float3 ase_worldPos = TransformObjectToWorld( (v.vertex).xyz );
+				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
+				ase_worldViewDir = normalize(ase_worldViewDir);
+				float3 ase_worldNormal = TransformObjectToWorldNormal(v.ase_normal);
+				float fresnelNdotV126 = dot( ase_worldNormal, ase_worldViewDir );
+				float fresnelNode126 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV126, 2.0 ) );
+				float temp_output_1_0_g90 = fresnelNode126;
+				float temp_output_123_0 = ( ( 0.0 - temp_output_1_0_g90 ) / ( 0.49 - temp_output_1_0_g90 ) );
+				float3 temp_cast_0 = (temp_output_123_0).xxx;
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -1058,7 +1056,7 @@ Shader "PacmanShader"
 					v.vertex.xyz += vertexValue;
 				#endif
 
-				v.ase_normal = v.ase_normal;
+				v.ase_normal = temp_cast_0;
 
 				float3 positionWS = TransformObjectToWorld( v.vertex.xyz );
 				o.clipPos = TransformWorldToHClip(positionWS);
@@ -1196,7 +1194,8 @@ Shader "PacmanShader"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
@@ -1215,8 +1214,7 @@ Shader "PacmanShader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float _lightvalue;
-			#ifdef ASE_TESSELLATION
+						#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -1247,6 +1245,15 @@ Shader "PacmanShader"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float3 ase_worldPos = TransformObjectToWorld( (v.vertex).xyz );
+				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
+				ase_worldViewDir = normalize(ase_worldViewDir);
+				float3 ase_worldNormal = TransformObjectToWorldNormal(v.ase_normal);
+				float fresnelNdotV126 = dot( ase_worldNormal, ase_worldViewDir );
+				float fresnelNode126 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV126, 2.0 ) );
+				float temp_output_1_0_g90 = fresnelNode126;
+				float temp_output_123_0 = ( ( 0.0 - temp_output_1_0_g90 ) / ( 0.49 - temp_output_1_0_g90 ) );
+				float3 temp_cast_0 = (temp_output_123_0).xxx;
 				
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.vertex.xyz;
@@ -1259,7 +1266,7 @@ Shader "PacmanShader"
 				#else
 					v.vertex.xyz += vertexValue;
 				#endif
-				v.ase_normal = v.ase_normal;
+				v.ase_normal = temp_cast_0;
 
 				float3 positionWS = TransformObjectToWorld( v.vertex.xyz );
 				o.clipPos = TransformWorldToHClip(positionWS);
@@ -1405,7 +1412,8 @@ Shader "PacmanShader"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
@@ -1425,8 +1433,7 @@ Shader "PacmanShader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float _lightvalue;
-			#ifdef ASE_TESSELLATION
+						#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -1454,6 +1461,15 @@ Shader "PacmanShader"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float3 ase_worldPos = TransformObjectToWorld( (v.vertex).xyz );
+				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
+				ase_worldViewDir = normalize(ase_worldViewDir);
+				float3 ase_worldNormal = TransformObjectToWorldNormal(v.ase_normal);
+				float fresnelNdotV126 = dot( ase_worldNormal, ase_worldViewDir );
+				float fresnelNode126 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV126, 2.0 ) );
+				float temp_output_1_0_g90 = fresnelNode126;
+				float temp_output_123_0 = ( ( 0.0 - temp_output_1_0_g90 ) / ( 0.49 - temp_output_1_0_g90 ) );
+				float3 temp_cast_0 = (temp_output_123_0).xxx;
 				
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.vertex.xyz;
@@ -1469,7 +1485,7 @@ Shader "PacmanShader"
 					v.vertex.xyz += vertexValue;
 				#endif
 
-				v.ase_normal = v.ase_normal;
+				v.ase_normal = temp_cast_0;
 
 				float3 positionWS = TransformObjectToWorld( v.vertex.xyz );
 				float3 normalWS = TransformObjectToWorldNormal(v.ase_normal);
@@ -1620,7 +1636,8 @@ Shader "PacmanShader"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
@@ -1640,8 +1657,7 @@ Shader "PacmanShader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float _lightvalue;
-			#ifdef ASE_TESSELLATION
+						#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -1668,6 +1684,15 @@ Shader "PacmanShader"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float3 ase_worldPos = TransformObjectToWorld( (v.vertex).xyz );
+				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
+				ase_worldViewDir = normalize(ase_worldViewDir);
+				float3 ase_worldNormal = TransformObjectToWorldNormal(v.ase_normal);
+				float fresnelNdotV126 = dot( ase_worldNormal, ase_worldViewDir );
+				float fresnelNode126 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV126, 2.0 ) );
+				float temp_output_1_0_g90 = fresnelNode126;
+				float temp_output_123_0 = ( ( 0.0 - temp_output_1_0_g90 ) / ( 0.49 - temp_output_1_0_g90 ) );
+				float3 temp_cast_0 = (temp_output_123_0).xxx;
 				
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.vertex.xyz;
@@ -1683,7 +1708,7 @@ Shader "PacmanShader"
 					v.vertex.xyz += vertexValue;
 				#endif
 
-				v.ase_normal = v.ase_normal;
+				v.ase_normal = temp_cast_0;
 
 				float3 positionWS = TransformObjectToWorld( v.vertex.xyz );
 				float3 normalWS = TransformObjectToWorldNormal(v.ase_normal);
@@ -1808,7 +1833,6 @@ Shader "PacmanShader"
 /*ASEBEGIN
 Version=19107
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;77;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;78;0,0;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;PacmanShader;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForwardOnly;False;False;0;;0;0;Standard;23;Surface;0;0;  Blend;0;0;Two Sided;1;0;Forward Only;0;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;Receive Shadows;1;0;GPU Instancing;1;0;LOD CrossFade;0;0;Built-in Fog;0;0;DOTS Instancing;0;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;False;True;True;True;True;False;;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;79;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;80;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;81;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;;0;0;Standard;0;False;0
@@ -1817,32 +1841,19 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;83;0,0;Float;False;False;-1
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;84;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ScenePickingPass;0;7;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;85;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormals;0;8;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;86;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormalsOnly;0;9;DepthNormalsOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;True;9;d3d11;metal;vulkan;xboxone;xboxseries;playstation;ps4;ps5;switch;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;113;-1858.084,281.915;Inherit;True;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.SimpleAddOpNode;106;-2162.565,244.9687;Inherit;True;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;64;-2087.768,-97.60697;Inherit;False;False;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.GradientNode;2;-1759.352,-162.9494;Inherit;False;1;2;2;1,0.9175284,0,0.602945;0.4622642,0.4241954,0,1;1,0;1,1;0;1;OBJECT;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;78;-886.5561,-273.5857;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;PacmanShader;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForwardOnly;False;False;0;;0;0;Standard;23;Surface;0;0;  Blend;0;0;Two Sided;1;0;Forward Only;0;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;Receive Shadows;1;0;GPU Instancing;1;0;LOD CrossFade;0;0;Built-in Fog;0;0;DOTS Instancing;0;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;False;True;True;True;True;False;;False;0
 Node;AmplifyShaderEditor.GradientSampleNode;3;-1432.379,-229.9341;Inherit;True;2;0;OBJECT;;False;1;FLOAT;0;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.FunctionNode;112;-2426.656,-71.30393;Inherit;True;BlinnPhongLightWrap;-1;;87;139fed909c1bc1a42a96c42d8cf09006;0;5;1;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;44;FLOAT;0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.FunctionNode;116;-2671.378,-201.5101;Inherit;True;Lambert Light;1;;89;9be9b95d80559e74dac059ac0a4060cf;0;2;42;COLOR;0,0,0,0;False;52;FLOAT3;0,0,0;False;2;COLOR;0;FLOAT;57
-Node;AmplifyShaderEditor.WorldSpaceLightPos;107;-3030.089,-60.03065;Inherit;True;0;3;FLOAT4;0;FLOAT3;1;FLOAT;2
-Node;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;117;-3134.673,-295.9616;Inherit;True;False;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.SimpleDivideOpNode;119;-1405.068,40.25882;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.SimpleAddOpNode;108;-1674.582,-54.03342;Inherit;True;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.RangedFloatNode;90;-2909.965,206.7731;Inherit;True;Property;_lightvalue;light value;0;0;Create;True;0;0;0;False;0;False;1.19;0.34;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.GradientNode;2;-1626.195,-233.7607;Inherit;False;1;2;2;1,0.9175284,0,0.9176471;0,0,0,1;1,0;1,1;0;1;OBJECT;0
+Node;AmplifyShaderEditor.FunctionNode;123;-1734.77,-149.3102;Inherit;True;Inverse Lerp;-1;;90;09cbe79402f023141a4dc1fddd4c9511;0;3;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;124;-2020.671,46.77371;Inherit;False;Constant;_Float4;Float 4;2;0;Create;True;0;0;0;False;0;False;0.49;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.ViewDirInputsCoordNode;125;-2345.484,-156.4618;Inherit;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.FresnelNode;126;-2132.672,-154.518;Inherit;False;Standard;WorldNormal;ViewDir;False;False;5;0;FLOAT3;0,0,1;False;4;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;2;False;1;FLOAT;0
 WireConnection;78;2;3;0
-WireConnection;113;0;112;0
-WireConnection;113;1;90;0
-WireConnection;106;0;112;0
-WireConnection;106;1;90;0
+WireConnection;78;6;123;0
 WireConnection;3;0;2;0
-WireConnection;3;1;108;0
-WireConnection;112;1;117;2
-WireConnection;112;44;90;0
-WireConnection;116;42;107;1
-WireConnection;116;52;90;0
-WireConnection;119;0;64;0
-WireConnection;119;1;113;0
-WireConnection;108;0;64;0
-WireConnection;108;1;113;0
+WireConnection;3;1;123;0
+WireConnection;123;1;126;0
+WireConnection;123;2;124;0
+WireConnection;126;4;125;0
 ASEEND*/
-//CHKSM=DF6E582E4D7A2C3C6CCA88726C5083165278FB4E
+//CHKSM=F10F0F9E4C792F9C06F10DB9B196A1A01EEE6583

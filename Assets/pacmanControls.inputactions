@@ -1,0 +1,99 @@
+{
+    "name": "pacmanControls",
+    "maps": [
+        {
+            "name": "keyboard movement",
+            "id": "2ea7cc21-4d52-48f1-a301-667bb0e9b0dc",
+            "actions": [
+                {
+                    "name": "WASD",
+                    "type": "Button",
+                    "id": "911e6f9b-f9e6-4512-88ce-404d7f038abb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bfca92ec-f33a-4128-83a5-d87db8236bc7",
+                    "path": "<Keyboard>/w",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "930826a8-94ed-416e-a6ae-0df7de412475",
+                    "path": "<Keyboard>/s",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff290e27-f6f9-4a8d-9566-273a62258b51",
+                    "path": "<Keyboard>/a",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aee56cf8-29dc-4836-87f6-207d0f8d2ca1",
+                    "path": "<Keyboard>/d",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "pacman movement",
+            "bindingGroup": "pacman movement",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<DualShock4GamepadAndroid>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<XboxOneGamepadAndroid>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<SwitchProControllerHID>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
