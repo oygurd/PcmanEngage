@@ -6,45 +6,27 @@ public class Player_Controller : MonoBehaviour
 {
     [SerializeField] LayerMask whatIsWall;
     [SerializeField] input_player inputs;
-    [SerializeField] float speed, boxCastDistens;
-    [SerializeField] Vector3 nextPoint, consideredNextPoint, curentDirectin, boxCastSkale;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        nextPoint = transform.position;
-    }
+    [SerializeField] float speed, boxCastDistensForwaerd, boxCastDistensNew;
+    [SerializeField] Vector3 boxCastSkale;
+    private Vector3 curentDirectin;
+    [SerializeField] Transform gfx;
 
     // Update is called once per frame
     void Update()
     {
-        //if (checkIfReachDestination())
-        {
-            curentDirectin = ColculateNewVector3();
-            nextPoint = transform.position + curentDirectin;
-        }
+        curentDirectin = ColculateNewVector3();
         transform.Translate(Time.deltaTime * speed * curentDirectin);
-/*        if (checkIfReachDestination())
-        {
-*//*            consideredNextPoint = new Vector3(transform.position.x + inputs.lastinput.x, transform.position.y, transform.position.z + inputs.lastinput.z);*//*
-            //Debug.Log(consideredNextPoint);
-            if (checkIfWall(consideredNextPoint))
-            {
-                Debug.Log("is not wall");
-                nextPoint = consideredNextPoint;
-                goToVector3(nextPoint);
-            }
-        }*/
     }
 
     private Vector3 ColculateNewVector3()
     {
-        if (checkIfWall(inputs.lastinput))
+        if (checkIfWall(inputs.lastinput, boxCastDistensNew))
         {
+            gfx.rotation = Quaternion.LookRotation(inputs.lastinput);
             return inputs.lastinput;
         }
         else
-            if (checkIfWall(curentDirectin))
+            if (checkIfWall(curentDirectin, boxCastDistensForwaerd))
             {
                 return curentDirectin;
             }
@@ -53,29 +35,13 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    private void goToVector3(Vector3 target)
+    private bool checkIfWall(Vector3 direction, float distens)
     {
-        //transform.Translate(nextPoint - transform.position * Time.deltaTime * speed);
-    }
-    private bool checkIfWall(Vector3 direction)
-    {
-        if (!Physics.BoxCast(transform.position, boxCastSkale, direction, Quaternion.identity, boxCastDistens, whatIsWall))
+        if (!Physics.BoxCast(transform.position, boxCastSkale, direction, Quaternion.identity, distens, whatIsWall))
         {
             return true;
         }
         return false;
-        /*        if (!Physics.Raycast(transform.position, Diretin, 10f, whatIsWall))
-                {
-                    return true;
-                }
-                return false;*/
-    }
-    private bool checkIfReachDestination()
-    {
-        if (isAlmostZero(transform.position.x - nextPoint.x) && isAlmostZero(transform.position.z - nextPoint.z))
-            return true;
-        else
-            return false;
     }
     private bool isAlmostZero(float a)
     {
