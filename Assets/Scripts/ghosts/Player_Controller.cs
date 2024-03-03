@@ -22,7 +22,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (checkIfWall(inputs.lastinput, boxCastDistensNew))
         {
-            gfx.rotation = Quaternion.LookRotation(inputs.lastinput);
+            //gfx.rotation = Quaternion.LookRotation(inputs.lastinput);
             return inputs.lastinput;
         }
         else

@@ -8,7 +8,7 @@ public class ghost_controler1 : MonoBehaviour
     [SerializeField] ghost_input inputs;
     [SerializeField] float speed, boxCastDistensForwaerd, boxCastDistensNew;
     [SerializeField] Vector3 boxCastSkale;
-    private Vector3 curentDirectin = new Vector3(-1, 0, 0);
+    public Vector3 curentDirectin = new Vector3(-1, 0, 0);
 
     // Update is called once per frame
     void Update()
@@ -19,28 +19,28 @@ public class ghost_controler1 : MonoBehaviour
 
     private Vector3 ColculateNewVector3()
     {
-        if (checkIfWall(curentDirectin, boxCastDistensForwaerd))
-        {
-            return curentDirectin;
-        }
-        else
-            if (checkIfWall(inputs.lastinput, boxCastDistensNew))
-        {
-            return inputs.lastinput;
-        }
-        else
-            return Vector3.zero;
-        /*        if (checkIfWall(inputs.lastinput, boxCastDistensNew))
+        /*        if (checkIfWall(curentDirectin, boxCastDistensForwaerd))
+                {
+                    return curentDirectin;
+                }
+                else
+                    if (checkIfWall(inputs.lastinput, boxCastDistensNew))
                 {
                     return inputs.lastinput;
                 }
                 else
-                    if (checkIfWall(curentDirectin, boxCastDistensForwaerd))
-                    {
-                        return curentDirectin;
-                    }
-                    else
-                        return Vector3.zero;*/
+                    return Vector3.zero;*/
+        if (checkIfWall(inputs.lastinput, boxCastDistensNew))
+        {
+            return inputs.lastinput;
+        }
+        else
+            if (checkIfWall(curentDirectin, boxCastDistensForwaerd))
+        {
+            return curentDirectin;
+        }
+        else
+            return Vector3.zero;
 
     }
 

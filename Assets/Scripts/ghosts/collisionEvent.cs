@@ -18,7 +18,6 @@ public class collisionEvent : MonoBehaviour
         if (other.tag == whatIsPlayer)
         {
             colide.Invoke();
-            Debug.Log("colided");
         }
     }
 }
