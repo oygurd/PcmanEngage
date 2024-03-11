@@ -9,6 +9,7 @@ public class ghost_controler1 : MonoBehaviour
     [SerializeField] float speed, boxCastDistensForwaerd, boxCastDistensNew;
     [SerializeField] Vector3 boxCastSkale;
     public Vector3 curentDirectin = new Vector3(-1, 0, 0);
+    [SerializeField] Transform gfx;
 
     // Update is called once per frame
     void Update()
@@ -32,15 +33,19 @@ public class ghost_controler1 : MonoBehaviour
                     return Vector3.zero;*/
         if (checkIfWall(inputs.lastinput, boxCastDistensNew))
         {
+            gfx.rotation = Quaternion.LookRotation(inputs.lastinput);
             return inputs.lastinput;
         }
         else
             if (checkIfWall(curentDirectin, boxCastDistensForwaerd))
-        {
-            return curentDirectin;
-        }
-        else
-            return Vector3.zero;
+            {
+                return curentDirectin;
+            }
+            else
+            {
+                Debug.Log("WHY");
+                return Vector3.zero;
+            }
 
     }
 
