@@ -6,7 +6,6 @@ public class GhostsAnim : MonoBehaviour
 {
     Animator ghostAnim;
 
-    [SerializeField] ghost_controler1 ghostControllerMove;
     [SerializeField] Vector3 move;
 
 
