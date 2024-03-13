@@ -6,7 +6,7 @@ public class GhostsAnim : MonoBehaviour
 {
     Animator ghostAnim;
 
-    [SerializeField] Vector3 move;
+    [SerializeField] ghost_controler1 controler;
 
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class GhostsAnim : MonoBehaviour
 
     public void GhostIdleAndMove()
     {
-        if (move == Vector3.zero)
+        if (controler.curentDirectin == Vector3.zero)
         {
             ghostAnim.SetBool("isIdle", true);
             ghostAnim.SetBool("isMoving", false);
