@@ -13,13 +13,24 @@ MonoBehaviour:
   m_Name: VFXUI
   m_EditorClassIdentifier: 
   groupInfos: []
-  stickyNoteInfos: []
+  stickyNoteInfos:
+  - title: age over lifetime
+    position:
+      serializedVersion: 2
+      x: 699
+      y: 852
+      width: 202
+      height: 201
+    contents: changes the alpha of the material on the object to make it seem like
+      its vaporizing
+    theme: Classic
+    textSize: Small
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 662
+    x: 699
     y: -191
-    width: 703
+    width: 666
     height: 1677
 --- !u!114 &114350483966674976
 MonoBehaviour:
@@ -46,21 +57,7 @@ MonoBehaviour:
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_UIInfos: {fileID: 114340500867371532}
-  m_ParameterInfo:
-  - name: lava model
-    path: lava model
-    tooltip: 
-    sheetType: m_NamedObject
-    realType: Mesh
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":-2432090755550338912,"guid":"781df675aa280de4b9a035fa86ea2239","type":3}}'
-    min: -Infinity
-    max: Infinity
-    enumValues: []
-    descendantCount: 0
+  m_ParameterInfo: []
   m_ImportDependencies: []
   m_GraphVersion: 9
   m_ResourceVersion: 1
@@ -2594,7 +2591,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 662, y: 1001}
+  m_UIPosition: {x: 711, y: 956}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -2678,7 +2675,7 @@ MonoBehaviour:
   m_OutputSlots:
   - {fileID: 8926484042661614872}
   m_ExposedName: lava model
-  m_Exposed: 1
+  m_Exposed: 0
   m_Order: 0
   m_Category: 
   m_Min:
