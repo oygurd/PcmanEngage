@@ -423,6 +423,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5303273128827047033, guid: f549ecfa12b0f5547baadacf9285e8cc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e441bcdfe6f32db4ab2d9d76c57713df, type: 2}
     - target: {fileID: 5303273128827047035, guid: f549ecfa12b0f5547baadacf9285e8cc,
         type: 3}
       propertyPath: m_IsActive
@@ -461,6 +466,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f549ecfa12b0f5547baadacf9285e8cc, type: 3}
+--- !u!1 &1206680170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5303273128827047035, guid: f549ecfa12b0f5547baadacf9285e8cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1206680169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1206680171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206680170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391937b347c059a428a1d7a542db7e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fire: {fileID: 2100000, guid: 124c04fc2abe2e9428216f6690c7251c, type: 2}
+  Brick: {fileID: 2100000, guid: e441bcdfe6f32db4ab2d9d76c57713df, type: 2}
+  Ice: {fileID: 0}
+  Thunder: {fileID: 0}
 --- !u!1 &2083839336
 GameObject:
   m_ObjectHideFlags: 0
