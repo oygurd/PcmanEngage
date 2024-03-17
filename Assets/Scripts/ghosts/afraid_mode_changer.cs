@@ -8,6 +8,11 @@ public class afraid_mode_changer : MonoBehaviour
     [SerializeField] int active;
     [SerializeField] bool afraid;
 
+    public void afradTernOn(float time)
+    {
+        StartCoroutine(afraidFor(time));
+    }
+
     private IEnumerator afraidFor(float time)
     {
         active++;

@@ -266,8 +266,9 @@ GameObject:
   - component: {fileID: 34389823}
   - component: {fileID: 34389822}
   - component: {fileID: 34389825}
+  - component: {fileID: 34389826}
   m_Layer: 7
-  m_Name: player look
+  m_Name: player colider
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,6 +381,71 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   pointSponer: {fileID: 1045537498}
+--- !u!114 &34389826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34389820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970eaa6d957e7d34e8e6766915944ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsPlayer: blue point
+  colide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 486391337}
+        m_TargetAssemblyTypeName: afraid_mode_changer, Assembly-CSharp
+        m_MethodName: afradTernOn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 118332884}
+        m_TargetAssemblyTypeName: afraid_mode_changer, Assembly-CSharp
+        m_MethodName: afradTernOn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1390352963}
+        m_TargetAssemblyTypeName: afraid_mode_changer, Assembly-CSharp
+        m_MethodName: afradTernOn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 45477009}
+        m_TargetAssemblyTypeName: afraid_mode_changer, Assembly-CSharp
+        m_MethodName: afradTernOn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  pointSponer: {fileID: 1045537498}
 --- !u!1 &45477001
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +460,7 @@ GameObject:
   - component: {fileID: 45477005}
   - component: {fileID: 45477004}
   - component: {fileID: 45477008}
+  - component: {fileID: 45477009}
   m_Layer: 0
   m_Name: gost (4) oreng
   m_TagString: Untagged
@@ -527,6 +594,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &45477009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45477001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a053cf9688e8e2341a768700abf34315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghost_Input: {fileID: 45477005}
+  active: 0
+  afraid: 0
 --- !u!1 &92453479
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +776,7 @@ GameObject:
   - component: {fileID: 118332880}
   - component: {fileID: 118332879}
   - component: {fileID: 118332883}
+  - component: {fileID: 118332884}
   m_Layer: 0
   m_Name: gost (2) pink
   m_TagString: Untagged
@@ -827,6 +910,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &118332884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118332876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a053cf9688e8e2341a768700abf34315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghost_Input: {fileID: 118332880}
+  active: 0
+  afraid: 0
 --- !u!1 &127954725
 GameObject:
   m_ObjectHideFlags: 0
@@ -2279,6 +2377,7 @@ GameObject:
   - component: {fileID: 486391331}
   - component: {fileID: 486391330}
   - component: {fileID: 486391336}
+  - component: {fileID: 486391337}
   m_Layer: 0
   m_Name: gost (1) red
   m_TagString: Untagged
@@ -2412,6 +2511,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &486391337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486391329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a053cf9688e8e2341a768700abf34315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghost_Input: {fileID: 486391331}
+  active: 0
+  afraid: 0
 --- !u!1 &499530669
 GameObject:
   m_ObjectHideFlags: 0
@@ -3456,6 +3570,7 @@ GameObject:
   - component: {fileID: 1390352959}
   - component: {fileID: 1390352958}
   - component: {fileID: 1390352962}
+  - component: {fileID: 1390352963}
   m_Layer: 0
   m_Name: gost (3) blue
   m_TagString: Untagged
@@ -3589,6 +3704,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1390352963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390352955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a053cf9688e8e2341a768700abf34315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghost_Input: {fileID: 1390352959}
+  active: 0
+  afraid: 0
 --- !u!4 &1443862810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2187754467551168429, guid: fde96f5bb62c0df45942e9e7fb1deaef,
