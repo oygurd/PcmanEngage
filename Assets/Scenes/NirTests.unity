@@ -427,7 +427,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e441bcdfe6f32db4ab2d9d76c57713df, type: 2}
+      objectReference: {fileID: 2100000, guid: 3daf28ae01722334e8a3c53420c4404d, type: 2}
+    - target: {fileID: 5303273128827047035, guid: f549ecfa12b0f5547baadacf9285e8cc,
+        type: 3}
+      propertyPath: m_Name
+      value: FireAround
+      objectReference: {fileID: 0}
     - target: {fileID: 5303273128827047035, guid: f549ecfa12b0f5547baadacf9285e8cc,
         type: 3}
       propertyPath: m_IsActive
@@ -487,7 +492,7 @@ MonoBehaviour:
   Fire: {fileID: 2100000, guid: 124c04fc2abe2e9428216f6690c7251c, type: 2}
   Brick: {fileID: 2100000, guid: e441bcdfe6f32db4ab2d9d76c57713df, type: 2}
   Ice: {fileID: 0}
-  Thunder: {fileID: 0}
+  Thunder: {fileID: 2100000, guid: 3daf28ae01722334e8a3c53420c4404d, type: 2}
 --- !u!1 &2083839336
 GameObject:
   m_ObjectHideFlags: 0
