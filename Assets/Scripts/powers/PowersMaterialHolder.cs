@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class PowersMaterialHolder : MonoBehaviour
 {
     [SerializeField] Material Fire, Brick, Ice, Thunder;
