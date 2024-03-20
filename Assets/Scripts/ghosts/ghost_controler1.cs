@@ -43,7 +43,6 @@ public class ghost_controler1 : MonoBehaviour
             }
             else
             {
-                Debug.Log("WHY");
                 return Vector3.zero;
             }
 
