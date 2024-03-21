@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7854022871604536041}
   - component: {fileID: 7854022871604536043}
   - component: {fileID: 7854022871604536042}
-  - component: {fileID: 7854022871604536045}
+  - component: {fileID: 761182749}
   m_Layer: 0
   m_Name: LightningBolt
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7854022871604536039}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.12, y: 8.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -61,7 +61,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 4.5412054, y: 4.5412054, z: 0, w: 1}
+        m_Name: Lightning 1 Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -172,24 +175,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!320 &7854022871604536045
-PlayableDirector:
+--- !u!114 &761182749
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7854022871604536039}
   m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 0f2736fce67feeb4488e13030b7aada7, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 0}
-    value: {fileID: 7854022871604536040}
-  - key: {fileID: 8439668139328496678, guid: 0f2736fce67feeb4488e13030b7aada7, type: 2}
-    value: {fileID: 7854022871604536040}
-  m_ExposedReferences:
-    m_References: []
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e96a875d1e0964ba57e56cf10c2730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightning: {fileID: 7854022871604536040}
+  pressed: 0
