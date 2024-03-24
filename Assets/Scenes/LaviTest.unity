@@ -383,7 +383,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  pointSponer: {fileID: 1045537498}
+  pointSponer: {fileID: 0}
 --- !u!114 &34389826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  pointSponer: {fileID: 1045537498}
+  pointSponer: {fileID: 0}
 --- !u!114 &34389827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  pointSponer: {fileID: 1045537498}
+  pointSponer: {fileID: 0}
 --- !u!1 &45477001 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6277999124934037222, guid: 1cb3039d921477649b98d7560649a386,
@@ -2297,6 +2297,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4288112107507133800, guid: 4140f25d241db4c4a81f6609301f59b8,
+        type: 3}
+      propertyPath: powerUps.Array.data[1]
+      value: 
+      objectReference: {fileID: 1075469158822375408, guid: 05d541e90d75e7f41aaecff020b2c0f2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4140f25d241db4c4a81f6609301f59b8, type: 3}
 --- !u!1 &860108875

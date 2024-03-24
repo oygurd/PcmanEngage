@@ -7,7 +7,7 @@ public class collisionEvent : MonoBehaviour
 {
     [SerializeField] string whatIsPlayer;
     [SerializeField] UnityEvent colide;
-    [SerializeField] GameObject pointSponer;
+    //[SerializeField] GameObject pointSponer;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,7 +15,7 @@ public class collisionEvent : MonoBehaviour
         if (other.tag == whatIsPlayer)
         {
             colide.Invoke();
-            Instantiate(pointSponer, other.transform.position, Quaternion.identity);
+            //Instantiate(pointSponer, other.transform.position, Quaternion.identity);
             other.transform.position = new Vector3(-1, 0, 0);
         }
     }
