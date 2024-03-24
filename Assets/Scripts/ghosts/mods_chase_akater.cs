@@ -12,7 +12,6 @@ public class mods_chase_akater : MonoBehaviour
     void Start()
     {
         StartCoroutine(changBetwin());
-        //Invoke("changBetwin", timeToSwich[curent]);
     }
     private IEnumerator changBetwin()
     {
@@ -24,8 +23,6 @@ public class mods_chase_akater : MonoBehaviour
         curent++;
         if (curent < timeToSwich.Length)
             StartCoroutine(changBetwin());
-            //Invoke("changBetwin", timeToSwich[curent]);
-
     }
 
 

@@ -32,7 +32,6 @@ public class Player_Controller : MonoBehaviour
             }
         else
         {
-            Debug.Log(checkIfWall(inputs.lastinput, boxCastDistensNew) + " " + checkIfWall(curentDirectin, boxCastDistensForwaerd));
             return Vector3.zero;
         }
     }

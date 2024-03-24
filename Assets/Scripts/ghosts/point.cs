@@ -55,7 +55,7 @@ public class point : MonoBehaviour
 
     private void spownPowerUp()
     {
-        int random3 = Random.Range(1, powerUps.Length);
+        int random3 = Random.Range(0, powerUps.Length);
         Instantiate(powerUps[random3], transform.position, Quaternion.identity);
     }
 
