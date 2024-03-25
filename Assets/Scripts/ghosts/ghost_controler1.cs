@@ -10,12 +10,20 @@ public class ghost_controler1 : MonoBehaviour
     [SerializeField] Vector3 boxCastSkale;
     public Vector3 curentDirectin = new Vector3(-1, 0, 0);
     [SerializeField] Transform gfx;
+    public bool stand;
 
     // Update is called once per frame
     void Update()
     {
-        curentDirectin = ColculateNewVector3();
-        transform.Translate(Time.deltaTime * speed * curentDirectin);
+        if (stand)
+        {
+            curentDirectin = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            curentDirectin = ColculateNewVector3();
+            transform.Translate(Time.deltaTime * speed * curentDirectin);
+        }
     }
 
     private Vector3 ColculateNewVector3()
