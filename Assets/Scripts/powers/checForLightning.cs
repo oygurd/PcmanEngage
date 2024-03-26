@@ -10,6 +10,12 @@ public class checForLightning : MonoBehaviour
     [SerializeField] ghost_controler1 controler;
     [SerializeField] VisualEffect lightning;
 
+
+    private void Update()
+    {
+        startChec();
+    }
+
     public void startChec()
     {
         Vector3 player = new Vector3(playerTransform.position.x, 0, playerTransform.position.z);
