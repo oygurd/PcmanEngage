@@ -7,7 +7,7 @@ public class ghost_death : MonoBehaviour
     public bool death;
     [SerializeField] ghost_input ghost_Input;
     [SerializeField] Transform home;
-    [SerializeField] string whatIsPlayer;
+    [SerializeField] string whatIsHome;
 
 
 /*    // Update is called once per frame
@@ -27,7 +27,7 @@ public class ghost_death : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == whatIsPlayer)
+        if (other.tag == whatIsHome)
         {
             death = false;
             ghost_Input.arraymod2 = -1;
