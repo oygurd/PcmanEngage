@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-    [SerializeField] LayerMask whatIsWall;
+    [SerializeField] LayerMask[] whatIsWall = new LayerMask[0];
+    [SerializeField] int layerCurent;
     [SerializeField] input_player inputs;
     [SerializeField] float speed, boxCastDistensForwaerd, boxCastDistensNew;
     [SerializeField] Vector3 boxCastSkale, temp;
@@ -38,7 +39,7 @@ public class Player_Controller : MonoBehaviour
     //RaycastHit hit;
     private bool checkIfWall(Vector3 direction, float distens)
     {
-        if (Physics.BoxCast(transform.position, boxCastSkale, direction, Quaternion.identity, distens, whatIsWall))
+        if (Physics.BoxCast(transform.position, boxCastSkale, direction, Quaternion.identity, distens, whatIsWall[layerCurent]))
         {
             return false;
         }
@@ -54,6 +55,12 @@ public class Player_Controller : MonoBehaviour
         if (a > -0.05 && a < 0.05) return true;
         return false;
     }
+
+    public void unlock()
+    {
+        layerCurent = 1;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
