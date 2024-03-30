@@ -33,7 +33,7 @@ public class ghost_input : MonoBehaviour
     {
         if (direcshen != -controler.curentDirectin)
         {
-            tempWalkPoint = new Vector3(transform.position.x + direcshen.x * 5, transform.position.y, transform.position.z + direcshen.z * 5);
+            tempWalkPoint = new Vector3(transform.position.x + direcshen.x * maxDistens, transform.position.y, transform.position.z + direcshen.z * maxDistens);
             Vector3 targetNow;
             if (arraymod2 == -1)
                 targetNow = target[arraymod1].position;

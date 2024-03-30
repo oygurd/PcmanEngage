@@ -45,14 +45,17 @@ public class ghost_controler1 : MonoBehaviour
             return inputs.lastinput;
         }
         else
+        {
             if (checkIfWall(curentDirectin, boxCastDistensForwaerd))
             {
                 return curentDirectin;
             }
             else
             {
+                Debug.Log("is in zero");
                 return Vector3.zero;
             }
+        }
 
     }
 
@@ -72,6 +75,6 @@ public class ghost_controler1 : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, curentDirectin);
+        Gizmos.DrawRay(transform.position, curentDirectin * boxCastDistensForwaerd);
     }
 }
