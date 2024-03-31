@@ -12,8 +12,10 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private Vector3 curentDirectin;
     [SerializeField] Transform gfx;
 
+
+
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         curentDirectin = ColculateNewVector3();
         transform.Translate(Time.deltaTime * speed * curentDirectin);

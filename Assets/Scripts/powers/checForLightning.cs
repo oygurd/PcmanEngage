@@ -27,10 +27,10 @@ public class checForLightning : MonoBehaviour
         controler.stand = false;
     }
 
-    private void OnDrawGizmosSelected()
+/*    private void OnDrawGizmosSelected()
     {
         Vector3 myPosishen = new Vector3(this.transform.position.x, 0, this.transform.position.z);
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere(myPosishen, efectDistens);
-    }
+    }*/
 }

@@ -20,9 +20,9 @@ public class mods_chase_skater_oreng : MonoBehaviour
             ghost_Input.arraymod1 = 1;
     }
 
-    private void OnDrawGizmosSelected()
+/*    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position, sightRange);
-    }
+    }*/
 }
