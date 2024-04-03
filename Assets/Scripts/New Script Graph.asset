@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e66c6366d904e98bc83428217d4fd7, type: 3}
+  m_Name: New Script Graph
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"variables":{"Kind":"Flow","collection":{"$content":[{"name":"global
+      volume","value":null,"typeHandle":{"Identification":null,"$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[{"hasDefaultValue":false,"defaultValue":null,"_type":null,"key":null,"label":null,"summary":null,"hideLabel":false}],"valueOutputDefinitions":[],"title":"lightning
+      bolt power","summary":null,"pan":{"x":20.69844,"y":-596.1885},"zoom":1.0,"elements":[{"chainable":false,"parameterNames":[],"member":{"name":"playLightningBolt","parameterTypes":[],"targetType":"ActivateLightning","targetTypeName":"ActivateLightning","$version":"A"},"defaultValues":{"target":null},"position":{"x":-213.0,"y":-243.0},"guid":"85264ec1-ec12-4538-bfca-801cb7ba2bb1","$version":"A","$type":"Unity.VisualScripting.InvokeMember","$id":"11"},{"defaultValues":{},"position":{"x":24.0,"y":-239.0},"guid":"dbf4959f-7e7f-4801-aa37-25c5c9a32168","$version":"A","$type":"Unity.VisualScripting.If","$id":"15"},{"type":"UnityEngine.ScriptableObject","value":{"$content":0,"$type":"UnityEngine.Object"},"defaultValues":{},"position":{"x":-91.0,"y":-101.0},"guid":"ab75276d-d99f-4ed0-8152-db498ce1cc7d","$version":"A","$type":"Unity.VisualScripting.Literal","$id":"17"},{"startOn":true,"defaultValues":{},"position":{"x":175.0,"y":-232.0},"guid":"1acfdd88-01be-401b-8291-48a42629f478","$version":"A","$type":"Unity.VisualScripting.ToggleValue","$id":"19"},{"chainable":false,"parameterNames":[],"member":{"name":"IsActive","parameterTypes":[],"targetType":"UnityEngine.UI.Slider","targetTypeName":"UnityEngine.UI.Slider","$version":"A"},"defaultValues":{"target":null},"position":{"x":441.0,"y":-170.0},"guid":"7d8c3b4a-2dc6-4b4b-88be-33c7eddbe134","$version":"A","$type":"Unity.VisualScripting.InvokeMember","$id":"21"},{"chainable":false,"parameterNames":["obj"],"member":{"name":"Equals","parameterTypes":["System.Object"],"targetType":"System.Single","targetTypeName":"System.Single","$version":"A"},"defaultValues":{"target":{"$content":0.0,"$type":"System.Single"}},"position":{"x":44.0,"y":-513.0},"guid":"ef2ecdbc-23aa-428e-9bd3-52f36ea68856","$version":"A","$type":"Unity.VisualScripting.InvokeMember"},{"sourceUnit":{"$ref":"11"},"sourceKey":"exit","destinationUnit":{"$ref":"15"},"destinationKey":"enter","guid":"4ea2878f-4f47-4710-99a6-8fc43fe63251","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"15"},"sourceKey":"ifTrue","destinationUnit":{"$ref":"19"},"destinationKey":"turnOn","guid":"dda7737f-45f9-41a8-8f45-4cb64fafc4e4","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"19"},"sourceKey":"turnedOn","destinationUnit":{"$ref":"21"},"destinationKey":"enter","guid":"fff6055a-a111-43eb-a37e-4fd4d9f1c63d","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"17"},"sourceKey":"output","destinationUnit":{"$ref":"19"},"destinationKey":"onValue","guid":"4c09dc56-0508-4758-9974-7bea302b093d","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"19"},"sourceKey":"value","destinationUnit":{"$ref":"21"},"destinationKey":"target","guid":"d085c09b-feec-46e5-a358-12bc47ae1ffc","$type":"Unity.VisualScripting.ValueConnection"}],"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: e33357785d0a6e144b47abbe4adb9cb2, type: 2}

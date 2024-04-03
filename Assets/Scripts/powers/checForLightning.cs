@@ -9,6 +9,8 @@ public class checForLightning : MonoBehaviour
     [SerializeField] float efectDistens, timeOfEfect;
     [SerializeField] ghost_controler1 controler;
     [SerializeField] VisualEffect lightning;
+    [SerializeField] Animator distortion; //activates global volume to add more effects
+   
 
     public void startChec()
     {
@@ -16,8 +18,14 @@ public class checForLightning : MonoBehaviour
         Vector3 myPosishen = new Vector3(this.transform.position.x, 0, this.transform.position.z);
         if (Vector3.Distance(myPosishen, player) <= efectDistens)
         {
+            distortion.SetBool("Distortion", true);
             lightning.SendEvent("onPlayBolt");
             StartCoroutine(inRech(timeOfEfect));
+        }
+        else
+        {
+            distortion.SetBool("Distortion", false);
+
         }
     }
     private IEnumerator inRech(float time)
@@ -27,10 +35,10 @@ public class checForLightning : MonoBehaviour
         controler.stand = false;
     }
 
-/*    private void OnDrawGizmosSelected()
-    {
-        Vector3 myPosishen = new Vector3(this.transform.position.x, 0, this.transform.position.z);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(myPosishen, efectDistens);
-    }*/
+    /*    private void OnDrawGizmosSelected()
+        {
+            Vector3 myPosishen = new Vector3(this.transform.position.x, 0, this.transform.position.z);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(myPosishen, efectDistens);
+        }*/
 }
