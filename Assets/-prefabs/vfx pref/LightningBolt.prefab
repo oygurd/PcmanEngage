@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e96a875d1e0964ba57e56cf10c2730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalVolBoltStrike: {fileID: 7854022870648826412}
+  distortion: {fileID: 7854022871604536043}
   lightning: {fileID: 7854022871604536040}
   pressed: 0
 --- !u!114 &6467262167406361148
@@ -204,12 +204,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3731447a1837ee44b07052a5bf4578d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalVolBoltStrike: {fileID: 0}
   playerTransform: {fileID: 0}
   efectDistens: 0
   timeOfEfect: 0
   controler: {fileID: 0}
   lightning: {fileID: 0}
+  distortion: {fileID: 0}
 --- !u!1001 &2103655607875455735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -304,18 +304,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76fa774155252554b832c8457e367e8d, type: 3}
---- !u!114 &7854022870648826412 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8200693805087580379, guid: 76fa774155252554b832c8457e367e8d,
-    type: 3}
-  m_PrefabInstance: {fileID: 2103655607875455735}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7854022870648826413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7854022870648826413 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8200693805087580378, guid: 76fa774155252554b832c8457e367e8d,

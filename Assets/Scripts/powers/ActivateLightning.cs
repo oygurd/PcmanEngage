@@ -11,10 +11,11 @@ public class ActivateLightning : MonoBehaviour
     [SerializeField] VisualEffect lightning;
     public bool pressed = false;
 
-
+   
     private void Update()
     {
         playLightningBolt();
+
     }
 
     public void playLightningBolt()
@@ -24,11 +25,11 @@ public class ActivateLightning : MonoBehaviour
             lightning.SendEvent("onPlayBolt");
             pressed = true;
             distortion.SetBool("Distortion", true);
-
         }
-        
-
     }
 
-        
+    public void EndGlobalVol()
+    {
+        distortion.SetBool("Distortion", false);
+    }
 }
