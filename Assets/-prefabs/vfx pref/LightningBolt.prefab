@@ -295,12 +295,12 @@ PrefabInstance:
     - target: {fileID: 8200693805087580379, guid: 76fa774155252554b832c8457e367e8d,
         type: 3}
       propertyPath: m_IsGlobal
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8200693805087580379, guid: 76fa774155252554b832c8457e367e8d,
         type: 3}
       propertyPath: blendDistance
-      value: 6.8
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76fa774155252554b832c8457e367e8d, type: 3}
@@ -319,7 +319,7 @@ BoxCollider:
   m_GameObject: {fileID: 7854022870648826413}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3, y: 9.76, z: 3}
   m_Center: {x: 0, y: -4.07, z: 0}
