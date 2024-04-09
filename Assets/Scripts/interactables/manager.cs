@@ -6,10 +6,11 @@ using TMPro;
 public class manager : MonoBehaviour
 {
     [SerializeField] float helf;
-    [SerializeField] float points;
+    public float points;
     [SerializeField] TextMeshProUGUI textPoint, textHelf;
     [SerializeField] Vector3 playerStart, ghostStart;
     [SerializeField] GameObject player, red, blue, oreng, pink;
+    [SerializeField] endScrean eendScreenUI;
 
     public void AddPoints(float newPoints)
     {
@@ -32,7 +33,7 @@ public class manager : MonoBehaviour
     public void playerDeath()
     {
         Debug.Log("why");
-        if (helf > 0)
+        if (helf > 1)
         {
             helf--;
             textHelf.text = helf.ToString();
@@ -44,15 +45,7 @@ public class manager : MonoBehaviour
         }
         else
         {
-            Debug.Log("loos");
+            eendScreenUI.ShowEndScreen();
         }
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
