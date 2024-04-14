@@ -6,7 +6,8 @@ public class ghost_controler1 : MonoBehaviour
 {
     [SerializeField] LayerMask whatIsWall;
     [SerializeField] ghost_input inputs;
-    [SerializeField] float speed, boxCastDistensForwaerd, boxCastDistensNew;
+    [SerializeField] float speed, regilerSpeed, slodeSpeed, boxCastDistensForwaerd, boxCastDistensNew;
+    [SerializeField] int slode;
     [SerializeField] Vector3 boxCastSkale;
     public Vector3 curentDirectin = new Vector3(-1, 0, 0);
     [SerializeField] Transform gfx;
@@ -71,6 +72,22 @@ public class ghost_controler1 : MonoBehaviour
     {
         if (a > -0.05 && a < 0.05) return true;
         return false;
+    }
+
+    public void slodeFor(float time)
+    {
+        Debug.Log("enterd slow");
+        StartCoroutine(startSlode(time));
+    }
+    private IEnumerator startSlode(float time)
+    {
+        if (slode == 0)
+            speed = slodeSpeed;
+        slode++;
+        yield return new WaitForSeconds(time);
+        slode--;
+        if (slode == 0)
+            speed = regilerSpeed;
     }
     private void OnDrawGizmosSelected()
     {

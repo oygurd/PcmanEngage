@@ -321,6 +321,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc07cad2f8d7e42428db176cf8bdaff4, type: 3}
+--- !u!1 &453860685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1286139563091482871, guid: adc756a362ca36c46bacac6e818099b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6359166022520481984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &453860689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453860685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02996737be7e9c47b9589a69214f35d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubePrefab: {fileID: 3525418571453910675, guid: 12f1d281162c30c46948dce5fc57f080,
+    type: 3}
+  trailLength: 10
+  cubeSpacing: 0.5
+  trailDuration: 5
 --- !u!1001 &551753630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1902,6 +1925,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1000022955925478379, guid: adc756a362ca36c46bacac6e818099b6,
+        type: 3}
+      propertyPath: whatIsPlayer
+      value: fier trail
+      objectReference: {fileID: 0}
     - target: {fileID: 1822857772810018189, guid: adc756a362ca36c46bacac6e818099b6,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2037,6 +2065,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2122419447058845390, guid: adc756a362ca36c46bacac6e818099b6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2278392904664166269, guid: adc756a362ca36c46bacac6e818099b6,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -2097,6 +2130,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3157424321954355028, guid: adc756a362ca36c46bacac6e818099b6,
+        type: 3}
+      propertyPath: whatIsPlayer
+      value: fier trail
+      objectReference: {fileID: 0}
     - target: {fileID: 3410241606572604234, guid: adc756a362ca36c46bacac6e818099b6,
         type: 3}
       propertyPath: m_Sprite
@@ -2117,6 +2155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3577591187038674773, guid: adc756a362ca36c46bacac6e818099b6,
+        type: 3}
+      propertyPath: whatIsPlayer
+      value: fier trail
       objectReference: {fileID: 0}
     - target: {fileID: 3676636245931781555, guid: adc756a362ca36c46bacac6e818099b6,
         type: 3}
@@ -2268,6 +2311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876466289551115911, guid: adc756a362ca36c46bacac6e818099b6,
+        type: 3}
+      propertyPath: whatIsPlayer
+      value: fier trail
       objectReference: {fileID: 0}
     - target: {fileID: 4933839467631955557, guid: adc756a362ca36c46bacac6e818099b6,
         type: 3}
@@ -2444,21 +2492,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6359166022563710032, guid: adc756a362ca36c46bacac6e818099b6,
-        type: 3}
-      propertyPath: colideNotAfraid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playerHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 6359166022638679315, guid: adc756a362ca36c46bacac6e818099b6,
-        type: 3}
-      propertyPath: colideNotAfraid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playerHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 6359166023004624616, guid: adc756a362ca36c46bacac6e818099b6,
-        type: 3}
-      propertyPath: colideNotAfraid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playerHit
-      objectReference: {fileID: 0}
     - target: {fileID: 6359166023191735467, guid: adc756a362ca36c46bacac6e818099b6,
         type: 3}
       propertyPath: imeghelf.Array.data[3]
@@ -2474,11 +2507,6 @@ PrefabInstance:
       propertyPath: imeghelf.Array.data[5]
       value: 
       objectReference: {fileID: 1477079409}
-    - target: {fileID: 6359166023908602498, guid: adc756a362ca36c46bacac6e818099b6,
-        type: 3}
-      propertyPath: colideNotAfraid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playerHit
-      objectReference: {fileID: 0}
     - target: {fileID: 6688848584832015947, guid: adc756a362ca36c46bacac6e818099b6,
         type: 3}
       propertyPath: m_IsActive
@@ -2702,7 +2730,7 @@ PrefabInstance:
     - target: {fileID: 397471945558153351, guid: f61b454b57642b044a461576e938ed40,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 397471945558153351, guid: f61b454b57642b044a461576e938ed40,
         type: 3}
@@ -3166,7 +3194,7 @@ PrefabInstance:
     - target: {fileID: 2418965707854987366, guid: 4140f25d241db4c4a81f6609301f59b8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2418965707854987366, guid: 4140f25d241db4c4a81f6609301f59b8,
         type: 3}
@@ -3240,7 +3268,7 @@ PrefabInstance:
     - target: {fileID: 7573694231440123049, guid: abfd5a34ff2ad0b4fba1ddcd935a7b84,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7573694231440123049, guid: abfd5a34ff2ad0b4fba1ddcd935a7b84,
         type: 3}

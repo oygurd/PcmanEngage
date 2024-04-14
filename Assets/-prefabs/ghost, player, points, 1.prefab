@@ -1595,6 +1595,7 @@ GameObject:
   - component: {fileID: 6359166022554851200}
   - component: {fileID: 6359166022554851327}
   - component: {fileID: 6359166022554851326}
+  - component: {fileID: 7426024788808412485}
   - component: {fileID: 6359166022554851207}
   - component: {fileID: 6359166022554851206}
   - component: {fileID: 6359166022554851205}
@@ -1686,6 +1687,46 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7426024788808412485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359166022554851324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970eaa6d957e7d34e8e6766915944ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsPlayer: fire
+  colide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2579521459210291444}
+        m_TargetAssemblyTypeName: fireEfect, Assembly-CSharp
+        m_MethodName: startFier
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6359166022554851203}
+        m_TargetAssemblyTypeName: afraid_mode_changer, Assembly-CSharp
+        m_MethodName: afradTernOn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6359166022554851207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1906,7 +1947,55 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 5
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6359166023004624610}
+        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
+        m_MethodName: slodeFor
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6359166022638679311}
+        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
+        m_MethodName: slodeFor
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6359166023908602622}
+        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
+        m_MethodName: slodeFor
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6359166022563710028}
+        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
+        m_MethodName: slodeFor
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -2154,6 +2243,7 @@ MonoBehaviour:
   oreng: {fileID: 6359166022563710025}
   pink: {fileID: 6359166022638679308}
   eendScreenUI: {fileID: 3853306290241724342}
+  invonrebalFor: 0
 --- !u!1 &6359166023230994572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,6 +2691,7 @@ GameObject:
   - component: {fileID: 6359166024115958278}
   - component: {fileID: 6359166024115958279}
   - component: {fileID: 6359166024115958280}
+  - component: {fileID: 2122419447058845390}
   m_Layer: 7
   m_Name: player
   m_TagString: playerforportal
@@ -2676,6 +2767,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.4363432
   m_Center: {x: 0.010965824, y: 0, z: 0.0358572}
+--- !u!114 &2122419447058845390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359166024115958276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02996737be7e9c47b9589a69214f35d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubePrefab: {fileID: 3525418571453910675, guid: 12f1d281162c30c46948dce5fc57f080,
+    type: 3}
+  trailLength: 10
+  cubeSpacing: 0.5
+  trailDuration: 5
 --- !u!1 &8297293072525485286
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,6 +3148,16 @@ PrefabInstance:
       objectReference: {fileID: 6359166022702877262}
     - target: {fileID: 6277999124934037219, guid: 1cb3039d921477649b98d7560649a386,
         type: 3}
+      propertyPath: slodeSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277999124934037219, guid: 1cb3039d921477649b98d7560649a386,
+        type: 3}
+      propertyPath: regilerSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277999124934037219, guid: 1cb3039d921477649b98d7560649a386,
+        type: 3}
       propertyPath: boxCastSkale.x
       value: 1.75
       objectReference: {fileID: 0}
@@ -3142,7 +3260,7 @@ PrefabInstance:
     - target: {fileID: 6277999124934037247, guid: 1cb3039d921477649b98d7560649a386,
         type: 3}
       propertyPath: colideNotAfraid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playerDeath
+      value: playerHit
       objectReference: {fileID: 0}
     - target: {fileID: 6277999124934037247, guid: 1cb3039d921477649b98d7560649a386,
         type: 3}
@@ -3177,6 +3295,34 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1107785724419951279}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3577591187038674773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359166022563710025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970eaa6d957e7d34e8e6766915944ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsPlayer: fier trail
+  colide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6359166022563710028}
+        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
+        m_MethodName: slodeFor
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6359166022563710033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3416,7 +3562,7 @@ PrefabInstance:
     - target: {fileID: 8312863157482404669, guid: 71620a7a4365e0143a178bc07bcea33a,
         type: 3}
       propertyPath: colideNotAfraid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playerDeath
+      value: playerHit
       objectReference: {fileID: 0}
     - target: {fileID: 8312863157482404669, guid: 71620a7a4365e0143a178bc07bcea33a,
         type: 3}
@@ -3565,6 +3711,16 @@ PrefabInstance:
       objectReference: {fileID: 6359166022702877262}
     - target: {fileID: 8312863157482404673, guid: 71620a7a4365e0143a178bc07bcea33a,
         type: 3}
+      propertyPath: slodeSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312863157482404673, guid: 71620a7a4365e0143a178bc07bcea33a,
+        type: 3}
+      propertyPath: regilerSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312863157482404673, guid: 71620a7a4365e0143a178bc07bcea33a,
+        type: 3}
       propertyPath: boxCastSkale.x
       value: 1.75
       objectReference: {fileID: 0}
@@ -3617,6 +3773,34 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3106765976052795839}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4876466289551115911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359166023908602619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970eaa6d957e7d34e8e6766915944ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsPlayer: fier trail
+  colide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6359166023908602622}
+        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
+        m_MethodName: slodeFor
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6359166023908602499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3718,7 +3902,7 @@ PrefabInstance:
     - target: {fileID: 690999614862683976, guid: 89a90b59b14087045bd7c9b6d8cbf717,
         type: 3}
       propertyPath: colideNotAfraid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playerDeath
+      value: playerHit
       objectReference: {fileID: 0}
     - target: {fileID: 690999614862683976, guid: 89a90b59b14087045bd7c9b6d8cbf717,
         type: 3}
@@ -3852,6 +4036,16 @@ PrefabInstance:
       objectReference: {fileID: 6359166022702877262}
     - target: {fileID: 690999614862683988, guid: 89a90b59b14087045bd7c9b6d8cbf717,
         type: 3}
+      propertyPath: slodeSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 690999614862683988, guid: 89a90b59b14087045bd7c9b6d8cbf717,
+        type: 3}
+      propertyPath: regilerSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 690999614862683988, guid: 89a90b59b14087045bd7c9b6d8cbf717,
+        type: 3}
       propertyPath: boxCastSkale.x
       value: 1.75
       objectReference: {fileID: 0}
@@ -3898,6 +4092,34 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5897085150148090459}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3157424321954355028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359166022638679308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970eaa6d957e7d34e8e6766915944ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsPlayer: fier trail
+  colide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6359166022638679311}
+        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
+        m_MethodName: slodeFor
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6359166022638679316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4065,6 +4287,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6359166022258053601}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2579521459210291444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8902498087027005717, guid: f549ecfa12b0f5547baadacf9285e8cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 6359166022258053601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c98470a9e072b40aa0c3b5b0402fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6359166022365463505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4419,6 +4653,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 596190673034187128, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 596190673034187128, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 596190673034187128, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 596190673034187128, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 596190673034187128, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 596190673034187128, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1014240389893868233, guid: fae889cfddf5b6a4392a5c5231abb297,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4514,6 +4778,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2826319511698608658, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218841478606195815, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4402190991018161823, guid: fae889cfddf5b6a4392a5c5231abb297,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4575,6 +4849,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5178631082469911108, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968642717157052908, guid: fae889cfddf5b6a4392a5c5231abb297,
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -4669,9 +4948,69 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8518954429152054515, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518954429152054515, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518954429152054515, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518954429152054515, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518954429152054515, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518954429152054515, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9001337194248055672, guid: fae889cfddf5b6a4392a5c5231abb297,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9055580174284345990, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9055580174284345990, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9055580174284345990, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9055580174284345990, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9055580174284345990, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9055580174284345990, guid: fae889cfddf5b6a4392a5c5231abb297,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5282,6 +5621,16 @@ PrefabInstance:
       objectReference: {fileID: 6359166022702877262}
     - target: {fileID: 125324670130768081, guid: 658bfd578f172024a85c284dc769867b,
         type: 3}
+      propertyPath: slodeSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 125324670130768081, guid: 658bfd578f172024a85c284dc769867b,
+        type: 3}
+      propertyPath: regilerSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 125324670130768081, guid: 658bfd578f172024a85c284dc769867b,
+        type: 3}
       propertyPath: boxCastSkale.x
       value: 1.75
       objectReference: {fileID: 0}
@@ -5458,7 +5807,7 @@ PrefabInstance:
     - target: {fileID: 125324670130768091, guid: 658bfd578f172024a85c284dc769867b,
         type: 3}
       propertyPath: colideNotAfraid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playerDeath
+      value: playerHit
       objectReference: {fileID: 0}
     - target: {fileID: 125324670130768091, guid: 658bfd578f172024a85c284dc769867b,
         type: 3}
@@ -5484,6 +5833,34 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6484468581681618483}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1000022955925478379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359166023004624609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970eaa6d957e7d34e8e6766915944ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsPlayer: fier trail
+  colide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6359166023004624610}
+        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
+        m_MethodName: slodeFor
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6359166023004624617
 MonoBehaviour:
   m_ObjectHideFlags: 0
