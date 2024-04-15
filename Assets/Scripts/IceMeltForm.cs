@@ -14,20 +14,25 @@ public class IceMeltForm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             animations.SetBool("melt", true);
+            animations.SetBool("static", false);
+
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
             animations.SetBool("melt", false);
             animations.SetBool("spawn", false);
+            animations.SetBool("static", true);
 
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
             animations.SetBool("spawn", true);
+            animations.SetBool("static", false);
+
         }
     }
 }
