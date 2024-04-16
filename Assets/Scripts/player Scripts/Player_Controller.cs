@@ -9,7 +9,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] input_player inputs;
     [SerializeField] float speed, boxCastDistensForwaerd, boxCastDistensNew;
     [SerializeField] Vector3 boxCastSkale, temp;
-    [SerializeField] private Vector3 curentDirectin;
+    [SerializeField] Vector3 curentDirectin;
     [SerializeField] Transform gfx;
 
 
@@ -61,6 +61,11 @@ public class Player_Controller : MonoBehaviour
     public void unlock()
     {
         layerCurent = 1;
+    }
+
+    public void changCurentDirecshen(Vector3 newCurentDirecshen)
+    {
+        curentDirectin = newCurentDirecshen;
     }
 
     private void OnDrawGizmosSelected()

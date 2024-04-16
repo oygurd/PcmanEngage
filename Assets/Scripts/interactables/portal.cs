@@ -5,24 +5,17 @@ using UnityEngine;
 public class portal : MonoBehaviour
 {
     [SerializeField] Transform portalEndLocashen;
+    [SerializeField] Vector3 portalDirecshen;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "playerforportal")
         {
             other.transform.position = portalEndLocashen.position;
+    /*        Player_Controller playerControler1 = other.GetComponent<Player_Controller>();
+            playerControler1.changCurentDirecshen(portalDirecshen);*/
+            input_player input = other.GetComponent<input_player>();
+            input.lastinput = portalDirecshen;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
