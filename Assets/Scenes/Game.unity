@@ -546,6 +546,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.16
       objectReference: {fileID: 0}
+    - target: {fileID: 7552203303108130866, guid: 178bcfb1686fed34e9499830ce4fe1f2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -33.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552203303692167475, guid: 178bcfb1686fed34e9499830ce4fe1f2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -37.77
+      objectReference: {fileID: 0}
     - target: {fileID: 7552203303758149180, guid: 178bcfb1686fed34e9499830ce4fe1f2,
         type: 3}
       propertyPath: m_RootOrder
@@ -957,6 +967,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 929834832078878938, guid: adc756a362ca36c46bacac6e818099b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 929834832091133910, guid: adc756a362ca36c46bacac6e818099b6,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1259,10 +1274,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 394506803805402258, guid: d65ee9c87258002419e93fd8257baf6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514195845106601020, guid: d65ee9c87258002419e93fd8257baf6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4556543171428623797, guid: d65ee9c87258002419e93fd8257baf6b,
         type: 3}
       propertyPath: m_Name
       value: map ron  coliders map 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556543171428623797, guid: d65ee9c87258002419e93fd8257baf6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5440606811122284059, guid: d65ee9c87258002419e93fd8257baf6b,
         type: 3}
