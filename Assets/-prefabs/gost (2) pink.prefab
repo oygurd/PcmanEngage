@@ -152,6 +152,7 @@ MonoBehaviour:
   boxCastSkale: {x: 1.7, y: 0.5, z: 1.7}
   curentDirectin: {x: -1, y: 0, z: 0}
   gfx: {fileID: 690999614603760672}
+  stand: 0
 --- !u!114 &690999614862683976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +185,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isAfraid: {fileID: 0}
+  death: {fileID: 0}
 --- !u!1 &690999616350136108
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +296,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 4374683570094845090, guid: e338ef973b0184c468da68a5f0e0b764,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374683570094845090, guid: e338ef973b0184c468da68a5f0e0b764,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9348b341aaa1784498d78deef637d634, type: 2}
     - target: {fileID: 4784796167683879836, guid: e338ef973b0184c468da68a5f0e0b764,
         type: 3}
       propertyPath: m_RootOrder

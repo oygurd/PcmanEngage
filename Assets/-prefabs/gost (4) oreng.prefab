@@ -152,6 +152,7 @@ MonoBehaviour:
   boxCastSkale: {x: 1.7, y: 0.5, z: 1.7}
   curentDirectin: {x: -1, y: 0, z: 0}
   gfx: {fileID: 6277999124476058049}
+  stand: 0
 --- !u!114 &6277999124934037247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,21 +166,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatIsPlayer: Player
-  colide:
+  colideNotAfraid:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: manager, Assembly-CSharp
-        m_MethodName: AddHelf
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: -1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  colideAfraid:
+    m_PersistentCalls:
+      m_Calls: []
+  isAfraid: {fileID: 0}
+  death: {fileID: 0}
 --- !u!1 &6277999125994965597
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +349,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 7236401513500350464, guid: 25492359ab5216b48a77abc67cd41f53,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236401513500350464, guid: 25492359ab5216b48a77abc67cd41f53,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9348b341aaa1784498d78deef637d634, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25492359ab5216b48a77abc67cd41f53, type: 3}
 --- !u!4 &5593980236694729627 stripped
