@@ -1955,6 +1955,8 @@ GameObject:
   - component: {fileID: 6359166022554851202}
   - component: {fileID: 6359166022554851203}
   - component: {fileID: 1896427987}
+  - component: {fileID: 881210900065913840}
+  - component: {fileID: 6011837006684471310}
   m_Layer: 7
   m_Name: player colider
   m_TagString: Player
@@ -2411,6 +2413,48 @@ MonoBehaviour:
   - {fileID: 291689705}
   - {fileID: 1422000898}
   delayBeforeSwitch: 10
+--- !u!114 &881210900065913840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359166022554851324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1ce6f3d91a40f4c9d57355e5f4d8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iceCubePrefab: {fileID: 688477175222816906, guid: b03cf7bb607aa414caf3d239d3f791df,
+    type: 3}
+--- !u!114 &6011837006684471310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359166022554851324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970eaa6d957e7d34e8e6766915944ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsPlayer: ice point
+  colide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 881210900065913840}
+        m_TargetAssemblyTypeName: icePointInstanshiat, Assembly-CSharp
+        m_MethodName: instansiatePrefab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6359166022702877261
 GameObject:
   m_ObjectHideFlags: 0

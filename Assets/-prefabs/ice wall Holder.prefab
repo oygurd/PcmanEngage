@@ -412,13 +412,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selfDestructDelay: 5
-  meltTime: 2
+  meltTime: 1.5
   melt:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 688477174071115921}
         m_TargetAssemblyTypeName: IceMeltForm, Assembly-CSharp
         m_MethodName: startMelt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  spown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 688477174071115921}
+        m_TargetAssemblyTypeName: IceMeltForm, Assembly-CSharp
+        m_MethodName: startSpown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -558,7 +573,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f7a22f46be70fcf44bfdacf4f8d86311,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f7a22f46be70fcf44bfdacf4f8d86311,
         type: 3}

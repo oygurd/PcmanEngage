@@ -989,54 +989,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 953307110}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1325151515 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6359166022554851324, guid: adc756a362ca36c46bacac6e818099b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1822447084}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1325151528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325151515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc1ce6f3d91a40f4c9d57355e5f4d8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iceCubePrefab: {fileID: 688477175222816906, guid: b03cf7bb607aa414caf3d239d3f791df,
-    type: 3}
---- !u!114 &1325151529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325151515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970eaa6d957e7d34e8e6766915944ca9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsPlayer: ice point
-  colide:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1325151528}
-        m_TargetAssemblyTypeName: icePointInstanshiat, Assembly-CSharp
-        m_MethodName: instansiatePrefab
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1734147380
 GameObject:
   m_ObjectHideFlags: 0
