@@ -411,7 +411,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0dc69c0a8df7ce46b73b85580931d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfDestructDelay: 15
+  selfDestructDelay: 5
+  meltTime: 2
+  melt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 688477174071115921}
+        m_TargetAssemblyTypeName: IceMeltForm, Assembly-CSharp
+        m_MethodName: startMelt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &688477175582770144
 GameObject:
   m_ObjectHideFlags: 0

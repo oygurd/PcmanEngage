@@ -35,4 +35,10 @@ public class IceMeltForm : MonoBehaviour
 
         }
     }
+
+    public void startMelt()
+    {
+        animations.SetBool("melt", true);
+        animations.SetBool("static", false);
+    }
 }
