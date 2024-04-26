@@ -43,13 +43,14 @@ GameObject:
   - component: {fileID: 5303273128827047034}
   - component: {fileID: 5303273128827047032}
   - component: {fileID: 5303273128827047033}
+  - component: {fileID: 1206680171}
   m_Layer: 0
   m_Name: PowersAround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5303273128827047034
 Transform:
   m_ObjectHideFlags: 0
@@ -93,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 403c44c59d208af47b2f49a8489a84d5, type: 2}
+  - {fileID: 2100000, guid: 124c04fc2abe2e9428216f6690c7251c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,6 +116,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1206680171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303273128827047035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391937b347c059a428a1d7a542db7e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fire: {fileID: 2100000, guid: 124c04fc2abe2e9428216f6690c7251c, type: 2}
+  Brick: {fileID: 2100000, guid: e441bcdfe6f32db4ab2d9d76c57713df, type: 2}
+  Ice: {fileID: 0}
+  Thunder: {fileID: 2100000, guid: 3daf28ae01722334e8a3c53420c4404d, type: 2}
 --- !u!1 &5303273130155313430
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5303273130155313429
 Transform:
   m_ObjectHideFlags: 0
@@ -155,7 +172,7 @@ VisualEffect:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5303273130155313430}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Asset: {fileID: 8926484042661614526, guid: 77dc4aa2c2218974cbaa710f9fab523e, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
@@ -182,7 +199,11 @@ VisualEffect:
     m_Gradient:
       m_Array: []
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: -2432090755550338912, guid: 781df675aa280de4b9a035fa86ea2239,
+          type: 3}
+        m_Name: lava model
+        m_Overridden: 0
     m_Bool:
       m_Array: []
 --- !u!73398921 &5303273130155313428
