@@ -8,7 +8,7 @@ public class manager : MonoBehaviour
 {
     [SerializeField] int helf;
     public float points;
-    [SerializeField] TextMeshProUGUI textPoint, textHelf;
+    [SerializeField] TextMeshProUGUI textPoint;
     [SerializeField] Image[] imeghelf = new Image[0];
     [SerializeField] Vector3 playerStart, ghostStart;
     [SerializeField] GameObject player, red, blue, oreng, pink;
@@ -25,7 +25,7 @@ public class manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        textHelf.text = helf.ToString();
+        //textHelf.text = helf.ToString();
         textPoint.text = points.ToString();
     }
 
@@ -36,7 +36,6 @@ public class manager : MonoBehaviour
         if (helf > 0)
         {
             helf--;
-            textHelf.text = helf.ToString();
             player.transform.position = playerStart;
             red.transform.position = ghostStart;
             blue.transform.position = ghostStart;
