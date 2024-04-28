@@ -12,7 +12,7 @@ public class IceMeltForm : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+/*    void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -34,5 +34,16 @@ public class IceMeltForm : MonoBehaviour
             animations.SetBool("static", false);
 
         }
+    }*/
+
+    public void startMelt()
+    {
+        animations.SetBool("melt", true);
+        animations.SetBool("static", false);
+    }
+    public void startSpown()
+    {
+        animations.SetBool("spawn", true);
+        animations.SetBool("static", false);
     }
 }

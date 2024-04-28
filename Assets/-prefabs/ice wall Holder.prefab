@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 688477174496648428}
   - component: {fileID: 688477174496648429}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: IceForm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 688477174776371754}
   - component: {fileID: 688477174776371756}
   - component: {fileID: 688477174776371755}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: heavyAir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 688477174844291158}
   - component: {fileID: 688477174844291159}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: iceMelt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,6 +375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 688477175222816907}
+  - component: {fileID: 8484969294251191533}
   m_Layer: 0
   m_Name: ice wall Holder
   m_TagString: Untagged
@@ -398,6 +399,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8484969294251191533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688477175222816906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0dc69c0a8df7ce46b73b85580931d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selfDestructDelay: 5
+  meltTime: 1.5
+  melt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 688477174071115921}
+        m_TargetAssemblyTypeName: IceMeltForm, Assembly-CSharp
+        m_MethodName: startMelt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  spown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 688477174071115921}
+        m_TargetAssemblyTypeName: IceMeltForm, Assembly-CSharp
+        m_MethodName: startSpown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &688477175582770144
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +454,7 @@ GameObject:
   - component: {fileID: 688477175582770145}
   - component: {fileID: 688477175582770147}
   - component: {fileID: 688477175582770146}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: IceMeltAir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +573,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f7a22f46be70fcf44bfdacf4f8d86311,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f7a22f46be70fcf44bfdacf4f8d86311,
         type: 3}
@@ -624,6 +669,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ice wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f7a22f46be70fcf44bfdacf4f8d86311,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7a22f46be70fcf44bfdacf4f8d86311, type: 3}
