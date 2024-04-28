@@ -33,13 +33,14 @@ public class ghost_input : MonoBehaviour
         else
         {
             float horizontal = 0f, vertical = 0f;
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.W))
                 vertical = 1f;
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.S))
                 vertical = -1f;
-            if (Input.GetKey(KeyCode.LeftArrow))
+
+            if (Input.GetKey(KeyCode.A))
                 horizontal = -1f;
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.D))
                 horizontal = 1f;
             if (!(horizontal == 0))
                 vertical = 0;

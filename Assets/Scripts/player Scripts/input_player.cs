@@ -19,15 +19,15 @@ public class input_player : MonoBehaviour
         }
         else
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.UpArrow))
                 vertical = 1f;
-            else if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.DownArrow))
                 vertical = -1f;
-
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.LeftArrow))
                 horizontal = -1f;
-            else if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.RightArrow))
                 horizontal = 1f;
+
         }
         if (!(horizontal == 0))
             vertical = 0;
