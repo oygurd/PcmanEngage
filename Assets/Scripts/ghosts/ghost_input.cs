@@ -11,21 +11,41 @@ public class ghost_input : MonoBehaviour
     private float closest;
     [SerializeField] Transform[] target = new Transform[1];
     public int arraymod1, arraymod2;
+    public bool isMultiplayer;
 
     // Update is called once per frame
     void Update()
     {
-        newLastinput = new Vector3(0, 0, 0);
-        closest = 200;
-        CheckDirecshenAndClosest(new Vector3(1, 0, 0));
-        CheckDirecshenAndClosest(new Vector3(-1, 0, 0));
-        CheckDirecshenAndClosest(new Vector3(0, 0, 1));
-        CheckDirecshenAndClosest(new Vector3(0, 0, -1));
-        if (newLastinput == new Vector3(0, 0, 0))
+        if (!isMultiplayer)
         {
-            newLastinput = -controler.curentDirectin;
+            newLastinput = new Vector3(0, 0, 0);
+            closest = 200;
+            CheckDirecshenAndClosest(new Vector3(1, 0, 0));
+            CheckDirecshenAndClosest(new Vector3(-1, 0, 0));
+            CheckDirecshenAndClosest(new Vector3(0, 0, 1));
+            CheckDirecshenAndClosest(new Vector3(0, 0, -1));
+            if (newLastinput == new Vector3(0, 0, 0))
+            {
+                newLastinput = -controler.curentDirectin;
+            }
+            lastinput = newLastinput;
         }
-        lastinput = newLastinput;
+        else
+        {
+            float horizontal = 0f, vertical = 0f;
+            if (Input.GetKey(KeyCode.UpArrow))
+                vertical = 1f;
+            else if (Input.GetKey(KeyCode.DownArrow))
+                vertical = -1f;
+            if (Input.GetKey(KeyCode.LeftArrow))
+                horizontal = -1f;
+            else if (Input.GetKey(KeyCode.RightArrow))
+                horizontal = 1f;
+            if (!(horizontal == 0))
+                vertical = 0;
+            if (horizontal != 0 || vertical != 0)
+                lastinput = new Vector3(horizontal, 0, vertical);
+        }
     }
     Vector3 tempWalkPoint;
 
