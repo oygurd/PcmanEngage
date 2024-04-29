@@ -7,6 +7,8 @@ public class SwitchGhost : MonoBehaviour
     [SerializeField] bool switchActive = false;
     private GameObject[] indicator = new GameObject[0];
     private input_player inputPlayer;
+    private GameManager maneger;
+
 
     void Start()
     {
@@ -24,6 +26,11 @@ public class SwitchGhost : MonoBehaviour
 
         GameObject[] player = GameObject.FindGameObjectsWithTag("playerforportal");
         inputPlayer = player[0].GetComponent<input_player>();
+
+        GameObject[] manegerobject = GameObject.FindGameObjectsWithTag("all seans menejer");
+        maneger = manegerobject[0].GetComponent<GameManager>();
+
+        switchActive = maneger.isMultiplayer;
 
         if (switchActive)
             ToggleSwitching();
