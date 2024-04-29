@@ -6,6 +6,7 @@ public class SwitchGhost : MonoBehaviour
     private int currentGhostIndex = 0; // Index of the currently active ghost
     [SerializeField] bool switchActive = false;
     private GameObject[] indicator = new GameObject[0];
+    private input_player inputPlayer;
 
     void Start()
     {
@@ -19,9 +20,15 @@ public class SwitchGhost : MonoBehaviour
             ghosts[i] = ghostObjects[i].GetComponent<ghost_input>();
         }
 
-        // Find all GameObjects with Ghost_input script
         indicator = GameObject.FindGameObjectsWithTag("indicator");
 
+        GameObject[] player = GameObject.FindGameObjectsWithTag("playerforportal");
+        inputPlayer = player[0].GetComponent<input_player>();
+
+        if (switchActive)
+            ToggleSwitching();
+        else
+            notMultiplayer();
     }
 
     void Update()
@@ -68,12 +75,19 @@ public class SwitchGhost : MonoBehaviour
         ghosts[index].isMultiplayer = true;
         indicator[index].SetActive(true);
     }
-
-    [SerializeField] input_player inputPlayer;
-    public void ToggleSwitching(bool active)
+    public void ToggleSwitching()
     {
-        switchActive = active;
+        switchActive = true;
         ActivateGhost(currentGhostIndex);
         inputPlayer.isMultiplayer = true;
+    }
+
+    private void notMultiplayer()
+    {
+        for (int i = 0; i < ghosts.Length; i++)
+        {
+            ghosts[i].isMultiplayer = false;
+            indicator[i].SetActive(false);
+        }
     }
 }
