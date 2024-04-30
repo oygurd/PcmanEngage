@@ -1,4 +1,5 @@
 using UnityEngine;
+using Cinemachine;
 
 public class SwitchGhost : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class SwitchGhost : MonoBehaviour
     private GameObject[] indicator = new GameObject[0];
     private input_player inputPlayer;
     private GameManager maneger;
+    private GameObject player1;
+    private CinemachineVirtualCamera cameraFolowPlayer;
 
 
     void Start()
@@ -25,10 +28,14 @@ public class SwitchGhost : MonoBehaviour
         indicator = GameObject.FindGameObjectsWithTag("indicator");
 
         GameObject[] player = GameObject.FindGameObjectsWithTag("playerforportal");
+        player1 = player[0];
         inputPlayer = player[0].GetComponent<input_player>();
 
         GameObject[] manegerobject = GameObject.FindGameObjectsWithTag("all seans menejer");
         maneger = manegerobject[0].GetComponent<GameManager>();
+
+        GameObject[] camera = GameObject.FindGameObjectsWithTag("camera folow");
+        cameraFolowPlayer = camera[0].GetComponent<CinemachineVirtualCamera>();
 
         switchActive = maneger.isMultiplayer;
 
@@ -84,6 +91,7 @@ public class SwitchGhost : MonoBehaviour
     }
     public void ToggleSwitching()
     {
+        cameraFolowPlayer.Follow = this.transform;
         switchActive = true;
         ActivateGhost(currentGhostIndex);
         inputPlayer.isMultiplayer = true;
@@ -91,6 +99,7 @@ public class SwitchGhost : MonoBehaviour
 
     private void notMultiplayer()
     {
+        cameraFolowPlayer.Follow = player1.transform;
         for (int i = 0; i < ghosts.Length; i++)
         {
             ghosts[i].isMultiplayer = false;
