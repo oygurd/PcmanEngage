@@ -11,6 +11,7 @@ public class SwitchGhost : MonoBehaviour
     private GameManager maneger;
     private GameObject player1;
     private CinemachineVirtualCamera cameraFolowPlayer;
+    private CinemachineConfiner cameraconfinerr;
 
 
     void Start()
@@ -37,6 +38,7 @@ public class SwitchGhost : MonoBehaviour
 
         GameObject[] camera = GameObject.FindGameObjectsWithTag("camera folow");
         cameraFolowPlayer = camera[0].GetComponent<CinemachineVirtualCamera>();
+        cameraconfinerr = camera[0].GetComponent<CinemachineConfiner>();
 
         if (manegerobject.Length > 0)
             switchActive = maneger.isMultiplayer;
@@ -94,6 +96,7 @@ public class SwitchGhost : MonoBehaviour
     public void ToggleSwitching()
     {
         cameraFolowPlayer.Follow = this.transform;
+        cameraconfinerr.enabled = false;
         switchActive = true;
         ActivateGhost(currentGhostIndex);
         inputPlayer.isMultiplayer = true;
@@ -102,6 +105,7 @@ public class SwitchGhost : MonoBehaviour
     private void notMultiplayer()
     {
         cameraFolowPlayer.Follow = player1.transform;
+        cameraconfinerr.enabled = true;
         for (int i = 0; i < ghosts.Length; i++)
         {
             ghosts[i].isMultiplayer = false;
