@@ -32,12 +32,14 @@ public class SwitchGhost : MonoBehaviour
         inputPlayer = player[0].GetComponent<input_player>();
 
         GameObject[] manegerobject = GameObject.FindGameObjectsWithTag("all seans menejer");
-        maneger = manegerobject[0].GetComponent<GameManager>();
+        if (manegerobject.Length > 0)
+            maneger = manegerobject[0].GetComponent<GameManager>();
 
         GameObject[] camera = GameObject.FindGameObjectsWithTag("camera folow");
         cameraFolowPlayer = camera[0].GetComponent<CinemachineVirtualCamera>();
 
-        switchActive = maneger.isMultiplayer;
+        if (manegerobject.Length > 0)
+            switchActive = maneger.isMultiplayer;
 
         if (switchActive)
             ToggleSwitching();
