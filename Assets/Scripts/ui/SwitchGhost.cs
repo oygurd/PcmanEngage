@@ -28,19 +28,18 @@ public class SwitchGhost : MonoBehaviour
 
         indicator = GameObject.FindGameObjectsWithTag("indicator");
 
-        GameObject[] player = GameObject.FindGameObjectsWithTag("playerforportal");
-        player1 = player[0];
-        inputPlayer = player[0].GetComponent<input_player>();
+        player1 = GameObject.FindGameObjectWithTag("playerforportal");
+        inputPlayer = player1.GetComponent<input_player>();
 
-        GameObject[] manegerobject = GameObject.FindGameObjectsWithTag("all seans menejer");
-        if (manegerobject.Length > 0)
-            maneger = manegerobject[0].GetComponent<GameManager>();
+        GameObject manegerobject = GameObject.FindGameObjectWithTag("all seans menejer");
+        if (manegerobject != null)
+            maneger = manegerobject.GetComponent<GameManager>();
 
-        GameObject[] camera = GameObject.FindGameObjectsWithTag("camera folow");
-        cameraFolowPlayer = camera[0].GetComponent<CinemachineVirtualCamera>();
-        cameraconfinerr = camera[0].GetComponent<CinemachineConfiner>();
+        GameObject camera = GameObject.FindGameObjectWithTag("camera folow");
+        cameraFolowPlayer = camera.GetComponent<CinemachineVirtualCamera>();
+        cameraconfinerr = camera.GetComponent<CinemachineConfiner>();
 
-        if (manegerobject.Length > 0)
+        if (manegerobject != null)
             switchActive = maneger.isMultiplayer;
 
         if (switchActive)

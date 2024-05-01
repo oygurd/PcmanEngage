@@ -6,9 +6,19 @@ using UnityEngine.Events;
 public class collisionEventGhost : MonoBehaviour
 {
     [SerializeField] string whatIsPlayer;
-    [SerializeField] UnityEvent colideNotAfraid, colideAfraid;
-    [SerializeField] afraid_mode_changer isAfraid;
-    [SerializeField] ghost_death death;
+    private afraid_mode_changer isAfraid;
+    private ghost_death death;
+    private manager meneger;
+
+    private void Start()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag(whatIsPlayer);
+        isAfraid = player.GetComponent<afraid_mode_changer>();
+        death = GetComponent<ghost_death>();
+        GameObject meneger1 = GameObject.FindGameObjectWithTag("meneger");
+        meneger = meneger1.GetComponent<manager>();
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,11 +26,11 @@ public class collisionEventGhost : MonoBehaviour
         {
             if (!isAfraid.afraid)
             {
-                colideNotAfraid.Invoke();
+                meneger.playerHit();
             }
             else
             {
-                colideAfraid.Invoke();
+                death.changToDeath();
             }
         }
 

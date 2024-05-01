@@ -48,8 +48,8 @@ GameObject:
   - component: {fileID: 125324670130768080}
   - component: {fileID: 125324670130768081}
   - component: {fileID: 125324670130768091}
-  - component: {fileID: 4280964424709218905}
   - component: {fileID: 7983063736965443419}
+  - component: {fileID: 4280964424709218905}
   m_Layer: 0
   m_Name: gost (1) red
   m_TagString: Ghost
@@ -203,7 +203,23 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isAfraid: {fileID: 0}
-  death: {fileID: 7983063736965443419}
+  death: {fileID: 0}
+--- !u!114 &7983063736965443419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125324670130768082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2548edcbbffdc1b488914791cea76f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  death: 0
+  ghost_Input: {fileID: 125324670130768080}
+  home: {fileID: 0}
+  whatIsHome: home
 --- !u!114 &4280964424709218905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,22 +248,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7983063736965443419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125324670130768082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2548edcbbffdc1b488914791cea76f0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  death: 0
-  ghost_Input: {fileID: 125324670130768080}
-  home: {fileID: 0}
-  whatIsHome: home
 --- !u!1 &125324671447494802
 GameObject:
   m_ObjectHideFlags: 0

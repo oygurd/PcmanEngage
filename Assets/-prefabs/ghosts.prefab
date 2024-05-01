@@ -345,37 +345,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a: {fileID: 7983063736965443414}
   b: {fileID: 0}
---- !u!1 &7983063736665273343
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7983063736665273340}
-  m_Layer: 0
-  m_Name: home
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7983063736665273340
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7983063736665273343}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 1.86, z: -17.51}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7983063737209094463}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7983063736714904939
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +489,6 @@ Transform:
   - {fileID: 7983063736375533141}
   - {fileID: 7983063737930213230}
   - {fileID: 7983063737937271684}
-  - {fileID: 7983063736665273340}
   - {fileID: 7983063737649850314}
   m_Father: {fileID: 7983063737177494361}
   m_RootOrder: 4
@@ -588,7 +556,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7983063737209094463}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7983063737649850313
 MeshFilter:
@@ -1105,7 +1073,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target.Array.data[3]
       value: 
-      objectReference: {fileID: 7983063736665273340}
+      objectReference: {fileID: 0}
     - target: {fileID: 8312863157482404673, guid: 71620a7a4365e0143a178bc07bcea33a,
         type: 3}
       propertyPath: slodeSpeed
@@ -1213,7 +1181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   death: 0
   ghost_Input: {fileID: 7983063738137840461}
-  home: {fileID: 7983063736665273340}
+  home: {fileID: 0}
   whatIsHome: home
 --- !u!114 &8441278021369904949
 MonoBehaviour:
@@ -1358,7 +1326,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target.Array.data[3]
       value: 
-      objectReference: {fileID: 7983063736665273340}
+      objectReference: {fileID: 0}
     - target: {fileID: 6277999124934037219, guid: 1cb3039d921477649b98d7560649a386,
         type: 3}
       propertyPath: slodeSpeed
@@ -1567,7 +1535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   death: 0
   ghost_Input: {fileID: 7983063736802409983}
-  home: {fileID: 7983063736665273340}
+  home: {fileID: 0}
   whatIsHome: home
 --- !u!4 &7983063736802409980 stripped
 Transform:
@@ -1797,7 +1765,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target.Array.data[3]
       value: 
-      objectReference: {fileID: 7983063736665273340}
+      objectReference: {fileID: 0}
     - target: {fileID: 690999614862683988, guid: 89a90b59b14087045bd7c9b6d8cbf717,
         type: 3}
       propertyPath: slodeSpeed
@@ -1945,7 +1913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   death: 0
   ghost_Input: {fileID: 7983063736859528354}
-  home: {fileID: 7983063736665273340}
+  home: {fileID: 0}
   whatIsHome: home
 --- !u!4 &7983063736902580169 stripped
 Transform:
@@ -2283,7 +2251,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target.Array.data[3]
       value: 
-      objectReference: {fileID: 7983063736665273340}
+      objectReference: {fileID: 0}
     - target: {fileID: 125324670130768082, guid: 658bfd578f172024a85c284dc769867b,
         type: 3}
       propertyPath: m_Name
@@ -2348,7 +2316,7 @@ PrefabInstance:
         type: 3}
       propertyPath: home
       value: 
-      objectReference: {fileID: 7983063736665273340}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 658bfd578f172024a85c284dc769867b, type: 3}
 --- !u!4 &7983063736965443414 stripped
