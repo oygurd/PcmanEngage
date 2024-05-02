@@ -8,12 +8,10 @@ public class fireEfect : MonoBehaviour
     [SerializeField] bool isOnFire = false;
     public void startFier(float time)
     {
-        Debug.Log("enterd");
         StartCoroutine(startFier1(time));
     }
     private IEnumerator startFier1(float time)
     {
-        Debug.Log("start");
         a.SetActive(true);
         b.SetActive(true);
         isOnFire = true;
@@ -21,6 +19,5 @@ public class fireEfect : MonoBehaviour
         a.SetActive(false);
         b.SetActive(false);
         isOnFire = false;
-        Debug.Log("end");
     }
 }

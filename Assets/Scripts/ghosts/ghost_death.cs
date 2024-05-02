@@ -22,7 +22,7 @@ public class ghost_death : MonoBehaviour
         ghost_Input.arraymod2 = 3;
     }
 
-    private void OnTriggerEnter(Collider other)
+/*    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == whatIsHome)
         {
@@ -30,5 +30,5 @@ public class ghost_death : MonoBehaviour
             ghost_Input.arraymod2 = -1;
         }
 
-    }
+    }*/
 }
