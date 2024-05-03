@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2307954430225702557}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastinput: {x: 0, y: 0, z: 0}
+  isMultiplayer: 0
 --- !u!135 &2307954430225702545
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -338,9 +339,45 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2307954431751355162}
-        m_TargetAssemblyTypeName: afraid_mode_changer, Assembly-CSharp
-        m_MethodName: afradTernOn
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ghostStateMeneger, Assembly-CSharp
+        m_MethodName: startOnFire
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ghostStateMeneger, Assembly-CSharp
+        m_MethodName: startOnFire
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ghostStateMeneger, Assembly-CSharp
+        m_MethodName: startOnFire
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ghostStateMeneger, Assembly-CSharp
+        m_MethodName: startOnFire
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -563,8 +600,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
-        m_MethodName: slodeFor
+        m_TargetAssemblyTypeName: ghostStateMeneger, Assembly-CSharp
+        m_MethodName: startAfraid
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -575,8 +612,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
-        m_MethodName: slodeFor
+        m_TargetAssemblyTypeName: ghostStateMeneger, Assembly-CSharp
+        m_MethodName: startAfraid
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -587,8 +624,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
-        m_MethodName: slodeFor
+        m_TargetAssemblyTypeName: ghostStateMeneger, Assembly-CSharp
+        m_MethodName: startAfraid
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -599,32 +636,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ghost_controler1, Assembly-CSharp
-        m_MethodName: slodeFor
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 10
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8667119885438377290}
-        m_TargetAssemblyTypeName: GameObjectSwitcher, Assembly-CSharp
-        m_MethodName: TriggerSwitch
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2307954431751355162}
-        m_TargetAssemblyTypeName: afraid_mode_changer, Assembly-CSharp
-        m_MethodName: afradTernOn
+        m_TargetAssemblyTypeName: ghostStateMeneger, Assembly-CSharp
+        m_MethodName: startAfraid
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -646,18 +659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a053cf9688e8e2341a768700abf34315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghost_Input:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   active: 0
   afraid: 0
-  death:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &8667119885438377290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,6 +853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5303273130155313419, guid: f549ecfa12b0f5547baadacf9285e8cc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5303273130155313428, guid: f549ecfa12b0f5547baadacf9285e8cc,
         type: 3}

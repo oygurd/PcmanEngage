@@ -24,7 +24,7 @@ public class collisionEventGhost : MonoBehaviour
         if (other.tag == whatIsPlayer)
         {
             Debug.Log(!menegerState.afraid);
-            if (!menegerState.afraid && !menegerState.death)
+            if (!menegerState.afraid && !menegerState.death && !menegerState.onFire)
             {
                 meneger.playerHit();
             }

@@ -75,6 +75,7 @@ public class ghostStateMeneger : MonoBehaviour
     {
         onFire = true;
         onChangState(time);
+        controler.slodeFor(time);
     }
 
     //kensel death
