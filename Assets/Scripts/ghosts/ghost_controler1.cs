@@ -76,7 +76,6 @@ public class ghost_controler1 : MonoBehaviour
 
     public void slodeFor(float time)
     {
-        Debug.Log("enterd slow");
         StartCoroutine(startSlode(time));
     }
     private IEnumerator startSlode(float time)

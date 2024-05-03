@@ -6,17 +6,21 @@ public class ghostStateMeneger : MonoBehaviour
 {
     private ghost_input ghost_Input;
     private ghost_controler1 controler;
+    [SerializeField] GameObject lookDefolt;
 
     //death
     public bool death;
     [SerializeField] Transform home;
     [SerializeField] string whatIsHome;
+    [SerializeField] GameObject lookDeath;
 
     //afraid
     public bool afraid;
+    [SerializeField] GameObject lookAfraid;
 
     //onFire
     public bool onFire;
+    [SerializeField] GameObject lookOnFire;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +34,8 @@ public class ghostStateMeneger : MonoBehaviour
         {
             ghost_Input.arraymod2 = 3;
             StopAllCoroutines();
+            lookTernOfAll();
+            lookDeath.SetActive(true);
             onFire = false;
             afraid = false;
         }
@@ -38,12 +44,17 @@ public class ghostStateMeneger : MonoBehaviour
             ghost_Input.arraymod2 = 2;
             StopAllCoroutines();
             StartCoroutine(timeAfraide(time));
+            lookTernOfAll();
+            lookAfraid.SetActive(true);
+            onFire = false;
         }
         else if (onFire)
         {
             ghost_Input.arraymod2 = 2;
             StopAllCoroutines();
             StartCoroutine(timeOnFier(time));
+            lookTernOfAll();
+            lookOnFire.SetActive(true);
         }
     }
 
@@ -73,6 +84,8 @@ public class ghostStateMeneger : MonoBehaviour
         {
             death = false;
             ghost_Input.arraymod2 = -1;
+            lookTernOfAll();
+            lookDefolt.SetActive(true);
         }
 
     }
@@ -82,12 +95,24 @@ public class ghostStateMeneger : MonoBehaviour
         yield return new WaitForSeconds(time);
         ghost_Input.arraymod2 = -1;
         onFire = false;
+        lookTernOfAll();
+        lookDefolt.SetActive(true);
     }
     private IEnumerator timeAfraide(float time)
     {
         yield return new WaitForSeconds(time);
         ghost_Input.arraymod2 = -1;
         afraid = false;
+        lookTernOfAll();
+        lookDefolt.SetActive(true);
+    }
+
+    private void lookTernOfAll()
+    {
+        lookDeath.SetActive(false);
+        lookAfraid.SetActive(false);
+        lookOnFire.SetActive(false);
+        lookDefolt.SetActive(false);
     }
 
 

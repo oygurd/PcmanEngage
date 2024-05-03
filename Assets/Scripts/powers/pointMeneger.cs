@@ -37,7 +37,6 @@ public class pointMeneger : MonoBehaviour
         // Instantiate prefabs at each location
         for (int i = 0; i < listStartCount; i++)
         {
-            Debug.Log("Before removal: " + locations.Count);
             InstantiatePrefabAtLocation();
         }
     }
