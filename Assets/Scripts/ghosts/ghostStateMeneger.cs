@@ -5,6 +5,7 @@ using UnityEngine;
 public class ghostStateMeneger : MonoBehaviour
 {
     private ghost_input ghost_Input;
+    private ghost_controler1 controler;
 
     //death
     public bool death;
@@ -21,6 +22,7 @@ public class ghostStateMeneger : MonoBehaviour
     void Start()
     {
         ghost_Input = GetComponent<ghost_input>();
+        controler = GetComponent<ghost_controler1>();
     }
     private void onChangState(float time)
     {
@@ -28,6 +30,8 @@ public class ghostStateMeneger : MonoBehaviour
         {
             ghost_Input.arraymod2 = 3;
             StopAllCoroutines();
+            onFire = false;
+            afraid = false;
         }
         else if (afraid)
         {
@@ -53,6 +57,7 @@ public class ghostStateMeneger : MonoBehaviour
     {
         afraid = true;
         onChangState(time);
+        controler.slodeFor(time);
     }
 
     public void startOnFire(float time)
@@ -84,6 +89,8 @@ public class ghostStateMeneger : MonoBehaviour
         ghost_Input.arraymod2 = -1;
         afraid = false;
     }
+
+
 
 }
 

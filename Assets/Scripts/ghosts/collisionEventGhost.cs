@@ -6,15 +6,14 @@ using UnityEngine.Events;
 public class collisionEventGhost : MonoBehaviour
 {
     [SerializeField] string whatIsPlayer;
-    private afraid_mode_changer isAfraid;
+    private ghostStateMeneger isAfraid;
     private ghost_death death;
     private ghostStateMeneger stateMeneger;
     private manager meneger;
 
     private void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag(whatIsPlayer);
-        isAfraid = player.GetComponent<afraid_mode_changer>();
+        isAfraid = GetComponent<ghostStateMeneger>();
         death = GetComponent<ghost_death>();
         stateMeneger = GetComponent<ghostStateMeneger>();
         GameObject meneger1 = GameObject.FindGameObjectWithTag("meneger");
