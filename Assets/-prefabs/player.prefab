@@ -223,7 +223,6 @@ GameObject:
   - component: {fileID: 2307954431751355160}
   - component: {fileID: 2307954431751355163}
   - component: {fileID: 2307954431751355162}
-  - component: {fileID: 8667119885438377290}
   - component: {fileID: 8394000765012666217}
   - component: {fileID: 3110191265350134935}
   m_Layer: 7
@@ -379,6 +378,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ghostStateMeneger, Assembly-CSharp
         m_MethodName: startOnFire
         m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2307954430903764755}
+        m_TargetAssemblyTypeName: PowersMaterialHolder, Assembly-CSharp
+        m_MethodName: changToFire
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -555,6 +566,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2307954430903764755}
+        m_TargetAssemblyTypeName: PowersMaterialHolder, Assembly-CSharp
+        m_MethodName: changToThunder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6596513982166885485}
+        m_TargetAssemblyTypeName: fireEfect, Assembly-CSharp
+        m_MethodName: startLitning
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2307954431751355160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,29 +696,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   afraid: 0
---- !u!114 &8667119885438377290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2307954431751355237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7dbb7c45c47d2442bb2a2f2d193ee16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstSet:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSet:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  delayBeforeSwitch: 10
 --- !u!114 &8394000765012666217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,6 +776,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2307954430521261956}
     m_Modifications:
+    - target: {fileID: 1206680171, guid: f549ecfa12b0f5547baadacf9285e8cc, type: 3}
+      propertyPath: Renderer1
+      value: 
+      objectReference: {fileID: 7610663923259207937}
     - target: {fileID: 5303273128639169160, guid: f549ecfa12b0f5547baadacf9285e8cc,
         type: 3}
       propertyPath: m_Name
@@ -876,6 +892,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f549ecfa12b0f5547baadacf9285e8cc, type: 3}
+--- !u!114 &2307954430903764755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1206680171, guid: f549ecfa12b0f5547baadacf9285e8cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2307954431983009144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391937b347c059a428a1d7a542db7e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6596513982166885485 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8902498087027005717, guid: f549ecfa12b0f5547baadacf9285e8cc,
@@ -911,6 +939,12 @@ MonoBehaviour:
   trailLength: 10
   cubeSpacing: 0.5
   trailDuration: 5
+--- !u!23 &7610663923259207937 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5303273128827047033, guid: f549ecfa12b0f5547baadacf9285e8cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2307954431983009144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7610663923469729783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5303273128639169167, guid: f549ecfa12b0f5547baadacf9285e8cc,
