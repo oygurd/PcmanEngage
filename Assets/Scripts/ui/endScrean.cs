@@ -18,6 +18,7 @@ public class endScrean : MonoBehaviour
     public void ShowEndScreen()
     {
         currentScore = maneger.points;
+        GetHighestScore();
         UpdateScore();
         GetHighestScore();
         textHighestScore.text = highestScore.ToString();
