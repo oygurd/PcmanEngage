@@ -21,7 +21,14 @@ public class stopVisualWhenPickupDown : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "playerforportal")
+        
+    }
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "playerforportal")
         {
             // vfx.SetActive(false);
             Debug.Log("works");

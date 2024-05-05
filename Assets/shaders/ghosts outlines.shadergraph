@@ -216,6 +216,20 @@
             },
             "m_InputSlot": {
                 "m_Node": {
+                    "m_Id": "6ea3caa99cf2439e8812bcc1bea75e0f"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "fa07eede944c429c9a419a49aed008ea"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
                     "m_Id": "78b36b872e174dbb95e3983cc824d4cd"
                 },
                 "m_SlotId": 0
@@ -559,8 +573,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1430.0001220703125,
-            "y": 278.0,
+            "x": -1434.0,
+            "y": 280.0,
             "width": 208.0,
             "height": 302.0
         }
@@ -748,7 +762,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 0.6800000071525574,
+        "e00": 2.8299999237060549,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,
@@ -1145,8 +1159,8 @@
     "m_ShaderOutputName": "Tiling",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 5.0,
-        "y": 5.0
+        "x": 3.0,
+        "y": 3.0
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -1345,9 +1359,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1029.0001220703125,
-            "y": 171.00001525878907,
-            "width": 208.0,
+            "x": -1176.9998779296875,
+            "y": 228.99998474121095,
+            "width": 207.99993896484376,
             "height": 302.0
         }
     },
@@ -1421,12 +1435,12 @@
         "m_Id": "572047f0df3348509144621cf7cee2f8"
     },
     "m_AllowMaterialOverride": true,
-    "m_SurfaceType": 0,
+    "m_SurfaceType": 1,
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
     "m_RenderFace": 2,
-    "m_AlphaClip": false,
+    "m_AlphaClip": true,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
     "m_CustomEditorGUI": "",
@@ -1835,7 +1849,7 @@
     "m_ShaderOutputName": "In",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 0.029999999329447748,
+        "x": 0.11999999731779099,
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
