@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2881100743768423274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2881100743768423284}
+  - component: {fileID: 2881100743768423285}
+  m_Layer: 0
+  m_Name: point meneger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2881100743768423284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2881100743768423274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.17, y: 1.86, z: -17.51}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2881100743768423285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2881100743768423274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71dfdd0874157844b27e46552bbd4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabList:
+  - prefab: {fileID: 3265729687262581539, guid: abfd5a34ff2ad0b4fba1ddcd935a7b84,
+      type: 3}
+    min: 3
+    maxExtra: 2
+    extraChance: 0.2
+  - prefab: {fileID: 3265729687262581539, guid: 0da7f646c107604408d45c2f0e3af26a,
+      type: 3}
+    min: 2
+    maxExtra: 5
+    extraChance: 0.2
+  - prefab: {fileID: 1075469158822375408, guid: 05d541e90d75e7f41aaecff020b2c0f2,
+      type: 3}
+    min: 3
+    maxExtra: 2
+    extraChance: 0.2
+  - prefab: {fileID: 3265729687262581539, guid: 2386b72a545418040a49f826ffdff03f,
+      type: 3}
+    min: 1
+    maxExtra: 1
+    extraChance: 0.2
+  - prefab: {fileID: 3265729687262581539, guid: 7e7e1dfbdfcd210499207863cca715ae,
+      type: 3}
+    min: 5
+    maxExtra: 5
+    extraChance: 0
+  - prefab: {fileID: 3265729687262581539, guid: c45ad59135044b04c8d83764979598f7,
+      type: 3}
+    min: 3
+    maxExtra: 2
+    extraChance: 0.2
+  defaultPrefab: {fileID: 233183785445850503, guid: f61b454b57642b044a461576e938ed40,
+    type: 3}
+  locations: []

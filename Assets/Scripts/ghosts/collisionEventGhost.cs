@@ -6,21 +6,32 @@ using UnityEngine.Events;
 public class collisionEventGhost : MonoBehaviour
 {
     [SerializeField] string whatIsPlayer;
-    [SerializeField] UnityEvent colideNotAfraid, colideAfraid;
-    [SerializeField] afraid_mode_changer isAfraid;
-    [SerializeField] ghost_death death;
+    private ghostStateMeneger menegerState;
+    private ghostStateMeneger stateMeneger;
+    private manager meneger;
+
+    private void Start()
+    {
+        menegerState = GetComponent<ghostStateMeneger>();
+        stateMeneger = GetComponent<ghostStateMeneger>();
+        GameObject meneger1 = GameObject.FindGameObjectWithTag("meneger");
+        meneger = meneger1.GetComponent<manager>();
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == whatIsPlayer)
         {
-            if (!isAfraid.afraid)
+            Debug.Log(!menegerState.afraid);
+            if (!menegerState.afraid && !menegerState.death && !menegerState.onFire)
             {
-                colideNotAfraid.Invoke();
+                meneger.playerHit();
             }
             else
             {
-                colideAfraid.Invoke();
+                //death.changToDeath();
+                stateMeneger.startDeath();
             }
         }
 
