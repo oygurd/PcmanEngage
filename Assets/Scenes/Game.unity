@@ -2312,6 +2312,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 159475486208448693, guid: c440cea86aca9bc429f83f07d42ca76e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 159475487173782455, guid: c440cea86aca9bc429f83f07d42ca76e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 159475487533947018, guid: c440cea86aca9bc429f83f07d42ca76e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3965945592551293023, guid: c440cea86aca9bc429f83f07d42ca76e,
         type: 3}
       propertyPath: playerTransform
@@ -2352,6 +2367,11 @@ PrefabInstance:
       propertyPath: colideNotAfraid.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1355725793}
+    - target: {fileID: 7983063736802409979, guid: c440cea86aca9bc429f83f07d42ca76e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7983063736802409983, guid: c440cea86aca9bc429f83f07d42ca76e,
         type: 3}
       propertyPath: target.Array.data[0]
@@ -2372,6 +2392,11 @@ PrefabInstance:
       propertyPath: target.Array.data[0]
       value: 
       objectReference: {fileID: 1370785162}
+    - target: {fileID: 7983063736859528382, guid: c440cea86aca9bc429f83f07d42ca76e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7983063736965443409, guid: c440cea86aca9bc429f83f07d42ca76e,
         type: 3}
       propertyPath: target.Array.data[0]
@@ -2447,6 +2472,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7983063737192158995, guid: c440cea86aca9bc429f83f07d42ca76e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983063737649850314, guid: c440cea86aca9bc429f83f07d42ca76e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.37
+      objectReference: {fileID: 0}
     - target: {fileID: 7983063737930213225, guid: c440cea86aca9bc429f83f07d42ca76e,
         type: 3}
       propertyPath: playerIsh
@@ -2472,6 +2507,11 @@ PrefabInstance:
       propertyPath: colideNotAfraid.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1355725793}
+    - target: {fileID: 7983063738137840457, guid: c440cea86aca9bc429f83f07d42ca76e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c440cea86aca9bc429f83f07d42ca76e, type: 3}
 --- !u!1001 &6343061924758582404
