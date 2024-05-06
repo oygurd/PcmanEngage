@@ -5,27 +5,24 @@ using UnityEngine;
 public class ghost_death : MonoBehaviour
 {
     public bool death;
-    [SerializeField] ghost_input ghost_Input;
-    [SerializeField] Transform home;
+    private ghost_input ghost_Input;
+    private Transform home;
     [SerializeField] string whatIsHome;
 
-
-/*    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (transform.position == home.position)
-        {
-            death = false;
-            ghost_Input.arraymod2 = -1;
-        }
-    }*/
+        GameObject home1 = GameObject.FindGameObjectWithTag(whatIsHome);
+        home = home1.GetComponent<Transform>();
+        ghost_Input = GetComponent<ghost_input>();
+    }
+
     public void changToDeath()
     {
         death = true;
         ghost_Input.arraymod2 = 3;
     }
 
-    private void OnTriggerEnter(Collider other)
+/*    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == whatIsHome)
         {
@@ -33,5 +30,5 @@ public class ghost_death : MonoBehaviour
             ghost_Input.arraymod2 = -1;
         }
 
-    }
+    }*/
 }

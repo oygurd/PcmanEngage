@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class afraid_mode_changer : MonoBehaviour
 {
-    [SerializeField] ghost_input[] ghost_Input = new ghost_input[0];
+    private ghost_input[] ghostsInputs;
+    private ghost_death[] ghostsDeath;
     [SerializeField] int active;
     public bool afraid;
-    [SerializeField] ghost_death[] death = new ghost_death[0];
+
+    private void Start()
+    {
+        // Find all GameObjects with Ghost_input script
+        GameObject[] ghostObjects = GameObject.FindGameObjectsWithTag("Ghost");
+        ghostsInputs = new ghost_input[ghostObjects.Length];
+        ghostsDeath = new ghost_death[ghostObjects.Length];
+
+        // Get references to Ghost_input scripts
+        for (int i = 0; i < ghostObjects.Length; i++)
+        {
+            ghostsInputs[i] = ghostObjects[i].GetComponent<ghost_input>();
+            ghostsDeath[i] = ghostObjects[i].GetComponent<ghost_death>();
+        }
+    }
 
     public void afradTernOn(float time)
     {
@@ -17,49 +32,23 @@ public class afraid_mode_changer : MonoBehaviour
     private IEnumerator afraidFor(float time)
     {
         active++;
-        for (int i = 0; i < ghost_Input.Length; i++)
+        for (int i = 0; i < ghostsInputs.Length; i++)
         {
-            if (!death[i].death)
-                ghost_Input[i].arraymod2 = 2;
+            if (!ghostsDeath[i].death)
+                ghostsInputs[i].arraymod2 = 2;
             afraid = true;
         }
 
         yield return new WaitForSeconds(time);
         active--;
-        for (int i = 0; i < ghost_Input.Length; i++)
+        for (int i = 0; i < ghostsInputs.Length; i++)
         {
-            if (active == 0 && !death[i].death)
+            if (active == 0 && !ghostsDeath[i].death)
             {
-                ghost_Input[i].arraymod2 = -1;
+                ghostsInputs[i].arraymod2 = -1;
                 afraid = false;
             }
         }
     }   
-/*        active++;
-        for (int i =0; i<ghost_Input.Length; i++)
-        {
-            ghost_Input[i].arraymod2 = 2;
-            afraid = true;
-        }
-
-        yield return new WaitForSeconds(time);
-        active--;
-        for (int i = 0; i < ghost_Input.Length; i++)
-        {
-            if (active == 0)
-            {
-                ghost_Input[i].arraymod2 = -1;
-                afraid = false;
-            }
-        }*/
-        /*        ghost_Input.arraymod2 = 2;
-                afraid = true;
-                yield return new WaitForSeconds(time);
-                active--;
-                if (active == 0)
-                {
-                    ghost_Input.arraymod2 = -1;
-                    afraid = false;
-                }*/
     
 }

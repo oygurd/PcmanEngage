@@ -47,6 +47,10 @@ public class ExitScreen : MonoBehaviour
     // Call this function to exit the game
     public void ExitGame()
     {
-        Application.Quit();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                    Application.Quit();
+        #endif
     }
 }

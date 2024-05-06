@@ -3,18 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PowersMaterialHolder : MonoBehaviour
 {
-    [SerializeField] Material Fire, Brick, Ice, Thunder;
+    [SerializeField] Material Fire, Brick, /*Ice,*/ Thunder;
+    [SerializeField] Renderer Renderer1;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        Renderer1 = GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void changToFire()
     {
-        
+        Renderer1.material = Fire;
     }
+    public void changToBrick()
+    {
+        Renderer1.material = Brick;
+    }
+/*    public void changToIce()
+    {
+        Renderer1.material = Ice;
+    }*/
+    public void changToThunder()
+    {
+        Renderer1.material = Thunder;
+    }
+
 }

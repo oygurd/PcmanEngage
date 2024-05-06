@@ -5,13 +5,30 @@ using UnityEngine;
 public class input_player : MonoBehaviour
 {
     public Vector3 lastinput;
+    public bool isMultiplayer;
 
     // Update is called once per frame
     void Update()
     {
-        float horizontal, vertical;
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+
+        float horizontal = 0f, vertical = 0f;
+        if (!isMultiplayer)
+        {
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+                vertical = 1f;
+            else if (Input.GetKey(KeyCode.DownArrow))
+                vertical = -1f;
+            if (Input.GetKey(KeyCode.LeftArrow))
+                horizontal = -1f;
+            else if (Input.GetKey(KeyCode.RightArrow))
+                horizontal = 1f;
+
+        }
         if (!(horizontal == 0))
             vertical = 0;
         if (horizontal != 0 || vertical != 0)

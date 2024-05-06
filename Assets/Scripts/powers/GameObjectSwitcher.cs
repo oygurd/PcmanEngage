@@ -15,6 +15,7 @@ public class GameObjectSwitcher : MonoBehaviour
         if (switchCoroutine == null)
         {
             switchCoroutine = StartCoroutine(SwitchSets());
+            StopCoroutine(SwitchSets());
         }
     }
 
