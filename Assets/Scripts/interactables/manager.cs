@@ -15,18 +15,29 @@ public class manager : MonoBehaviour
     [SerializeField] endScrean eendScreenUI;
     private bool invonrebal;
     [SerializeField] float invonrebalFor;
+    public AudioSource audioSource;
 
     public void AddPoints(float newPoints)
     {
         points += newPoints;
         textPoint.text = points.ToString();
+        if (newPoints == 20)
+        {
+            PlaySound();
+        }
     }
 
+    // פונקציה זו תופעל כאשר תרצה לנגן את הסאונד
+    public void PlaySound()
+    {
+        audioSource.Play();
+    }
     // Start is called before the first frame update
     void Start()
     {
         //textHelf.text = helf.ToString();
         textPoint.text = points.ToString();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void playerHit()
