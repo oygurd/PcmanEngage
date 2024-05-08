@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 315066415527345573}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &276388915278190059
 VisualEffect:
@@ -183,6 +183,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 2310507191381354526}
   - {fileID: 878029367977217277}
   - {fileID: 276388915278189077}
   m_Father: {fileID: 0}
@@ -221,7 +222,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 315066415527345573}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2663963097873954231
 MeshFilter:
@@ -238,7 +239,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8257715437852860358}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -302,3 +303,78 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1027668046281068638
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 315066415527345573}
+    m_Modifications:
+    - target: {fileID: 2672956767963407098, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_Name
+      value: Chilli pepper fire pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b099c6113821cf4aa390d20ed455687, type: 3}
+--- !u!4 &2310507191381354526 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3338170800659183680, guid: 6b099c6113821cf4aa390d20ed455687,
+    type: 3}
+  m_PrefabInstance: {fileID: 1027668046281068638}
+  m_PrefabAsset: {fileID: 0}
