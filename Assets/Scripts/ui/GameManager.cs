@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool isMultiplayer = false;
+    [Range (0,1)]
+    [SerializeField] float musicVolume, efectsVolume;
 
     void Awake()
     {
