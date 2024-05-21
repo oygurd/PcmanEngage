@@ -9,11 +9,14 @@ public class collisionEventGhost : MonoBehaviour
     private ghostStateMeneger menegerState;
     private ghostStateMeneger stateMeneger;
     private manager meneger;
+    [SerializeField] int pointsOnDefe;
+    private AudioSource audioSource;
 
     private void Start()
     {
         menegerState = GetComponent<ghostStateMeneger>();
         stateMeneger = GetComponent<ghostStateMeneger>();
+        audioSource = GetComponent<AudioSource>();
         GameObject meneger1 = GameObject.FindGameObjectWithTag("meneger");
         meneger = meneger1.GetComponent<manager>();
     }
@@ -27,11 +30,13 @@ public class collisionEventGhost : MonoBehaviour
             if (!menegerState.afraid && !menegerState.death && !menegerState.onFire)
             {
                 meneger.playerHit();
+                audioSource.Play();
             }
             else
             {
                 //death.changToDeath();
                 stateMeneger.startDeath();
+                meneger.AddPoints(pointsOnDefe);
             }
         }
 
