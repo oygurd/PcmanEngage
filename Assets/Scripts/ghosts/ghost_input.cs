@@ -12,6 +12,7 @@ public class ghost_input : MonoBehaviour
     [SerializeField] Transform[] target = new Transform[1];
     public int arraymod1, arraymod2;
     public bool isMultiplayer;
+    public GameObject indicator;
 
     // Update is called once per frame
     void Update()
